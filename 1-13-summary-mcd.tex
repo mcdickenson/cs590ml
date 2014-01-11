@@ -1,0 +1,46 @@
+\documentclass[12pt,letterpaper]{article}
+\include{preamble}
+
+% Edit these as appropriate
+\newcommand\course{STA571/CS590.01}
+\newcommand\semester{Spring 2014}                   % <-- current semester
+\newcommand\papertitle{The Inﬁnite Gaussian Mixture Model}                          % <-- paper title
+\newcommand\authoryear{Rasmussen, 2000}
+\newcommand\yourname{Matt Dickenson}                % <-- your name
+\newcommand\login{mcd31}                            % <-- your NetID
+\newcommand\hwdate{Due: 13 January, 2014}           % <-- HW due date
+
+\newenvironment{answer}[1]{
+  \subsubsection*{Problem #1}
+}
+
+
+\pagestyle{fancyplain}
+\headheight 60pt
+\chead{Summary of ``\papertitle'' (\authoryear) \\ ~\\}
+\lhead{\small \yourname\ \texttt{\login}\\\course}
+\rhead{\small \hwdate}
+\headsep 10pt
+
+\begin{document}
+
+% \noindent \emph{Homework Notes:} 
+
+
+
+The use of (Gaussian) mixture models is valuable for the analysis of data which is thought to have originated from one of several latent components. However, because the indicators identifying the component from which each observation originated are ``missing data,'' it can be difficult to choose the number of components $k$. Because $k$ is unknown, it is useful to allow it to vary infinitely. This paper introduces a practical method for estimating infinite hierarchical Bayesian mixture models. To do so, it combines two threads of previous research: the extension of finite Gaussians to the limiting case, and Dirichlet process mixture models. The result is that infinite Gaussian mixture models can be estimated by MCMC in finite time. 
+% combines two threads: Dirichlet process and extension of finite Gaussians to thte limiting case
+% treats indicators of the component as missing data
+% can be computed by MCMC in finite time
+
+One key ``trick'' in the paper is to substitute $k_{\text{rep}}$, the number of classes that (currently) have data associated with them, for the parameter $k$ when computing conditional posteriors for all model variables except the indicators (p. 4). That is, within the infinite possible values of $k$, there are some represented and some unrepresented, and the ``true'' value may be in either category. The parameter distributions for every k in the unrepresented class are all the same (p. 4). At each iteration of the MCMC, we can sample from the priors to get a Monte Carlo estimate of generating a new class. The paper demonstrates that infinite Gaussian mixture models can obtain good performance on multidimensional data without overfitting. 
+
+
+% The ``trick'' is on p. 4: ``For all the model variables except the indicators, the conditional posteriors for the infinite limit is obtained by substituting for k the number of classes that have data associated with them, krep, in the equations previously derived for the finite model.''
+% that is, within the infinite possible values of k, there are some represented and some unrepresented, and the ``true'' value may be in either category. The parameter distributions for every k in the unrepresented class are all the same (p. 4). 
+% Eqn 16 shows the probability that k > k_rep 
+% we can sample from the priors to get a MC estimate of generating a new class (p. 4)
+
+% ``It has been shown that good performance (without overfitting) can be achieved on multidimensional data.'' (p. 7)
+
+\end{document}

@@ -4,8 +4,8 @@
 % Edit these as appropriate
 \newcommand\course{STA571/CS590.01}
 \newcommand\semester{Spring 2014}                   % <-- current semester
-\newcommand\papertitle{Title}                          % <-- paper title
-\newcommand\authoryear{Author}
+\newcommand\papertitle{Correlated Topic Models}                          % <-- paper title
+\newcommand\authoryear{Blei and Lafferty}
 \newcommand\yourname{Matt Dickenson}                % <-- your name
 \newcommand\login{mcd31}                            % <-- your NetID
 \newcommand\hwdate{Due: 22 January, 2014}           % <-- HW due date
@@ -26,4 +26,23 @@
 
 % What are the advantages and disadvantages of the CTM as a model of documents? What might be done to create a better model?
 
+Correlated topic modeling (CTM) has several advantages over earlier methods of topical analysis, such as LDA. The main difference between these two models is that CTM does not assume independence between topics (as LDA does, through its reliance on the Dirichlet distribution). This means that CTM can borrow information across topics, and needs to observe less of a given document than an LDA model would to achieve the same predictive accuracy. CTM is also helpful for visual exporation of unstructured datasets. 
+
+These benefits are not without cost, however. Most importantly, the logistic normal distribution used in CTM is not conjugate with the multinomial distribution (used for topics), so analytical methods are intractable. The goal in inference with CTM models is to minimize the Kullback-Leibler divergence between the approximate and true posterior. MCMC is impractical for this, and so expectation-maximization (EM) is used. Unfortunately EM does not have the same asymptotic guarantees as MCMC, so the steps are iterated until the change in the likelihood between iterations is arbitrarily small. 
+
+Improvements on CTM will likely have to address shortcomings that it shares with LDA. For example, in both models the set of topics is assumed to be fixed across all the data. More advanced models for textual analytics could include topic discovery by incorporating components of change-point analysis. The potential number of topics $k$ in each period $t$ could be included in the model as a latent variable to be estimated. Overall, CTM is a useful modeling strategy whose predictive accuracy more than makes up for its complexity.
+
+% disadvantages:
+% logistic normal is not conjugate with multinomial
+% thus, uses Kullback-Leibler divergence minimization, which doesn't have same guarantees as MCMC
+
+% advantages:
+% does not assume independence between topics, ie, a document's topics can be correlated, unlike with LDA
+% natural for visualizing and exploring unstructured datasets
+% more accurate predictions (when topics are in fact correlated)
+
+% improvements:
+
+
+ 
 \end{document}

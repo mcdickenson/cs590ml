@@ -4,11 +4,11 @@
 % Edit these as appropriate
 \newcommand\course{STA571/CS590.01}
 \newcommand\semester{Spring 2014}                   % <-- current semester
-\newcommand\papertitle{Title}                          % <-- paper title
+\newcommand\papertitle{Hierarchical Dirichlet Processes}                          % <-- paper title
 \newcommand\authoryear{Author}
 \newcommand\yourname{Matt Dickenson}                % <-- your name
 \newcommand\login{mcd31}                            % <-- your NetID
-\newcommand\hwdate{Due: 22 January, 2014}           % <-- HW due date
+\newcommand\hwdate{Due: 29 January, 2014}           % <-- HW due date
 
 
 \pagestyle{fancyplain}
@@ -22,8 +22,9 @@
 
 % \noindent \emph{Homework Notes:} 
 
-
+Teh, Jordan, Beal, and Blei (2006) develop a hierarchical variant of mixture models, in which mixture models belonging to different groups share mixture components. This method has nice properties for modeling data originating from different but related processes. Because of its relation to the Chinese restaurant process, the authors refer to this hierarchical extension as a ``Chinese franchise process.'' Using this metaphor, each restaurant is a group, but the same ``dish'' can be served at multiple restaurants (and at multiple tables within a restaurant). Whenever a customer sits at a table, they are served the same dish as all other customers at that table. There are a number of sampling schemes that can be used, the efficiency of which depends on the particular application and whether reassignment of customers to a different table is allowed. As an example of a useful shortcut, in computing the posterior only the indices of the customers and tables must be sampled, because the factors ($\theta's and \psi's$) can be reconstructed from the global menu ($\phi$). 
 
 % Why is the HDP necessary to create an infinite topic model as opposed to just using a Dirichlet process prior on the distribution over topics theta in LDA, instead of a Dirichlet distribution?
+One application of HDP is to topic modeling. Extending LDA using a Dirichlet process prior (rather than the Dirichlet distribution) is tempting, but it presents a problem. Modeling documents with LDA means that each document has its own mixing proportion between topics. Because of this the DP would have to be run for each document, but we would wish to share information across documents. This is motivates the use of HDP--to use a hierarchical strategy to make the results of each document's DP similar. Other nice applications where this model would outperform traditional LDA include modeling multiple corpora of documents, and possibly in biology for subpopulations with a shared evolutionary history. 
 
 \end{document}

@@ -4,13 +4,14 @@
 # Matt Dickenson 
 # mcd31@duke.edu
 
-# Code up the generative model (i.e. generate data from) 
-# for a Dirichlet process mixture of Gaussians (preferably in R or Matlab), 
-# using a Normal-Inverse Wishart prior on the Gaussian parameters.
-
 # What happens as you vary the DP concentration parameter (alpha)? 
+# As alpha varies, the balance between classes shifts. In the final two rows of the plots, the third class is almost undetectable.
+
 # What happens as you vary the Normal-Inverse Wishart hyperparameters? 
-# Along with your code, submit plots of your generated data to back up your answers.
+# S affects the correlation between features. In the second half of the plots, the correlation between features is much more apparent.
+# mu_0 shifts the means of the features.
+# lambda impacts the scale (magnitude) of the features.
+# v affects the variance of the features.
 
 library(MCMCpack) # for Dirichlet and Wishart
 
@@ -118,6 +119,5 @@ for(a in 1:nrow(alphas)){
   }
 }
 dev.off()
-
 
 

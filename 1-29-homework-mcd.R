@@ -28,17 +28,12 @@ gmm_sampler = function(n, alpha, mu_0, lambda, S, v, legend=FALSE){
   p = ncol(S)
 
   Sigma = array(NA, dim=c(p,p,K))
-  # print(Sigma)
   mu = matrix(NA, nrow=K,ncol=p)
 
   # sample mu and Sigma from Normal-Inverse Wishart
   for(k in 1:K){
     Sigma[,,k] = solve(rwish(v, solve(S)))
-    # print("val:")
-    # print(Sigma[,,k])
     mu[k,] = mvrnorm(1, mu_0, Sigma[,,k])
-    # mu[k] = rnorm(1, mu_0, Sigma[,,k])
-    # print(mu[k,])
   }
 
   # sample probability of each class from Dirichlet
@@ -77,79 +72,19 @@ liststr=function(mylist){
   return(str)
 }
 
+# n = 1000
+# alpha = c(0.9, 0.9, 0.9)
+# mu_0 = c(0,0)
+# lambda = 1
+# S = matrix(c(1,0,0,1), nrow=2, ncol=2)
+# solve(S)
+# solve(rwish(v, solve(S)))
+# v = 5 
+# gmm_sampler(n, alpha, mu_0, lambda, S, v, legend=TRUE)
 
-
-n = 1000
-alpha = c(0.9, 0.9, 0.9)
-mu_0 = c(0,0)
-lambda = 1
-S = matrix(c(1,0,0,1), nrow=2, ncol=2)
-solve(S)
-solve(rwish(v, solve(S)))
-v = 5 
-gmm_sampler(n, alpha, mu_0, lambda, S, v, legend=TRUE)
-
-
-dev.off()
-par(mfrow=c(12,6))
-
-# set up hyper params 
-S1 = matrix(c(1,0,0,1), nrow=2, ncol=2)
-S2 = matrix(c(.9, .4, .4, .9), nrow=2, ncol=2)
-Ss = list(S1, S2)
-
-n = 1000
-S = matrix(c(1,0,0,1), nrow=2, ncol=2)
-dim(S)
-for(alpha in c(c(0.9, 0.9, 0.9), c(1,2,2), c(10, 10, 1))){
-  for(v in c(5,10)){
-    # for(mu_0 in c(c(0,0), c(-5, 5), c(1,10))){
-      for(lambda in c(1, 5)){
-        # print(S)
-        # print("v is:")
-        # print(v)
-        print("mu0")
-        print(mu_0)
-        gmm_sampler(n, alpha, mu_0, lambda, S, v, legend=FALSE)
-      }
-    }
-  }
-}
-for(mu_0 in c(c(0,0), c(-5, 5), c(1,10))){
-  print(mu_0)
-}
-
-for(v in c(1,5)){
-  print(v)
-}
-
-# for(S in c(matrix(c(1,0,0,1), nrow=2, ncol=2), matrix(c(1,0,0,1), nrow=2, ncol=2)))
-
-
-mus = matrix(c(0,0,-5,5,5,10), ncol=2, byrow=TRUE)
-mus
-
-S = matrix(c(1,0,0,1), nrow=2, ncol=2)
-mu_0 = c(0,0)
-dim(S)
-for(alpha in c(c(0.9, 0.9, 0.9), c(1,2,2), c(10, 10, 1))){
-  for(v in c(5,10)){
-    for(lambda in c(1, 5)){
-      for
-      # print(S)
-      # print("v is:")
-      # print(v)
-      print("mu0")
-      print(mu_0)
-      gmm_sampler(n, alpha, mu_0, lambda, S, v, legend=FALSE)
-    }  
-  }
-}
-
-dev.off()
-
+# output figures: 
 setwd("~/desktop")
-pdf("tmp.pdf", width=20, height=40)
+pdf("plots-mcd.pdf", width=20, height=40)
 par(mfrow=c(12,6))
 n = 1000
 mus = matrix(c(0,0,-5,5,5,10), ncol=2, byrow=TRUE)

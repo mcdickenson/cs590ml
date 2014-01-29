@@ -5,7 +5,7 @@
 # mcd31@duke.edu
 
 # What happens as you vary the DP concentration parameter (alpha)? 
-# As alpha varies, the balance between classes shifts. In the final two rows of the plots, the third class is almost undetectable.
+# Higher values of alpha lead to more classes present (higher values of K). 
 
 # What happens as you vary the Normal-Inverse Wishart hyperparameters? 
 # S affects the correlation between features. In the second half of the plots, the correlation between features is much more apparent.
@@ -15,53 +15,62 @@
 
 library(MCMCpack) # for Dirichlet and Wishart
 
-set.seed(8675309)
-
 gmm_sampler = function(n, alpha, mu_0, lambda, S, v, legend=FALSE){
   # n: number of samples
-  # alpha: parameter for Dirichlet
-  # mu_0: k-length vector of hyperparams for mu
+  # alpha: scalar parameter for Dirichlet process
+  # mu_0: p-length vector of hyperparams for mu
   # lambda: scalar for mu 
-  # v: k-length vector of scalars for Inverse Wishart
-  # S: k pxp inverse scale matrices
+  # v: scalar for Inverse Wishart
+  # S: pxp inverse scale matrix
 
-  K=length(alpha)
-  p = ncol(S)
-
-  Sigma = array(NA, dim=c(p,p,K))
-  mu = matrix(NA, nrow=K,ncol=p)
+  z = restaurant(alpha, n) # Dirichlet process table assignments
+  K = length(unique(z))
+  p = ncol(S)  
 
   # sample mu and Sigma from Normal-Inverse Wishart
+  Sigma = array(NA, dim=c(p,p,K))
+  mu = matrix(NA, nrow=K,ncol=p)
   for(k in 1:K){
     Sigma[,,k] = solve(rwish(v, solve(S)))
     mu[k,] = mvrnorm(1, mu_0, Sigma[,,k])
   }
 
-  # sample probability of each class from Dirichlet
-  pis = rdirichlet(1, alpha) 
-
-  # sample latent indicators of class 
-  z = rep(NA, n)
-  x = matrix(NA, nrow=n, ncol=p)
-
   # sample each x from the Gaussian dist for its class 
+  x = matrix(NA, nrow=n, ncol=p)
   for(i in 1:n){
-    z[i] = sample(seq(1:K), size=1, prob=pis)
     x[i,] = mvrnorm(1, mu[z[i],], Sigma[,,z[i]])
   }
 
   plot(x[,1], x[,2], col=z,
     xlab=paste("mu_0=", liststr(mu_0), ", lambda=", lambda, sep=""),
-    ylab=paste("alpha=", liststr(alpha), ", v=", v, sep=""),
+    ylab=paste("alpha=", alpha, ", v=", v, sep=""),
     main=paste("S=", liststr(as.vector(S)), sep="")
   )
 
   if(legend){
     legend("topright", 
-      legend=c("Class 1", "Class 2", "Class 3"), 
+      legend=paste("Class ", seq(1:K), sep=""), 
       pch=16, 
       col=c(1:K))
   }
+}
+
+
+restaurant = function(alpha, n){
+  table_counts = c(1) # number of 'customers' at each 'table'
+                      # first customer at first table
+  table_assignments = c(1, rep(NA, n-1))
+
+  for(m in 2:n){
+    tmp = c(table_counts, alpha)
+    table_props = tmp/sum(tmp)
+
+    table_m = sample(c(1:length(tmp)), 1, prob=table_props)
+    if(table_m==length(tmp)){ table_counts[table_m] = 1}
+    else{ table_counts[table_m] = table_counts[table_m] + 1}
+    table_assignments[m] = table_m 
+  }
+  return(table_assignments) 
 }
 
 liststr=function(mylist){
@@ -74,30 +83,30 @@ liststr=function(mylist){
 }
 
 # n = 1000
-# alpha = c(0.9, 0.9, 0.9)
+# alpha = 1
 # mu_0 = c(0,0)
 # lambda = 1
 # S = matrix(c(1,0,0,1), nrow=2, ncol=2)
+# v = 5 
 # solve(S)
 # solve(rwish(v, solve(S)))
-# v = 5 
+
 # gmm_sampler(n, alpha, mu_0, lambda, S, v, legend=TRUE)
 
 # output figures: 
 setwd("~/desktop")
-pdf("plots-mcd.pdf", width=20, height=40)
+pdf("1-29-plots-mcd.pdf", width=20, height=40)
 par(mfrow=c(12,6))
 n = 1000
 mus = matrix(c(0,0,-5,5,5,10), ncol=2, byrow=TRUE)
-alphas = matrix(c(c(0.9, 0.9, 0.9), c(1,2,2), c(10, 10, 1)), ncol=3, byrow=TRUE)
+# alphas = matrix(c(c(0.9, 0.9, 0.9), c(1,2,2), c(10, 10, 1)), ncol=3, byrow=TRUE)
 
 S = matrix(c(1,0,0,1), nrow=2, ncol=2)
 
-for(a in 1:nrow(alphas)){
+for(alpha in c(1,5,10)){
   for(v in c(5, 10)){
     for(m in 1:nrow(mus)){
       for(lambda in c(1, 5)){
-        alpha = alphas[a,]
         mu_0 = mus[m,]
         gmm_sampler(n, alpha, mu_0, lambda, S, v, legend=FALSE)
       }
@@ -107,11 +116,10 @@ for(a in 1:nrow(alphas)){
 
 S = matrix(c(1,.5,.5,1), nrow=2, ncol=2)
 
-for(a in 1:nrow(alphas)){
+for(alpha in c(1,5,10)){
   for(v in c(5, 10)){
     for(m in 1:nrow(mus)){
       for(lambda in c(1, 5)){
-        alpha = alphas[a,]
         mu_0 = mus[m,]
         gmm_sampler(n, alpha, mu_0, lambda, S, v, legend=FALSE)
       }

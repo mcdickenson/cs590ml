@@ -1,0 +1,37 @@
+\documentclass[12pt,letterpaper]{article}
+\include{preamble}
+
+% Edit these as appropriate
+\newcommand\course{STA571/CS590.01}
+\newcommand\semester{Spring 2014}                   % <-- current semester
+\newcommand\papertitle{The Indian Buffet Process: An Introduction and Review}                          % <-- paper title
+\newcommand\authoryear{Griffiths and Ghahramani, JMLR, 2011}
+\newcommand\yourname{Matt Dickenson}                % <-- your name
+\newcommand\login{mcd31}                            % <-- your NetID
+\newcommand\hwdate{Due: 10 February, 2014}           % <-- HW due date
+
+
+\pagestyle{fancyplain}
+\headheight 60pt
+\chead{Summary of ``\papertitle''\\ ~\\}
+\lhead{\small \yourname\ \texttt{\login}\\\course}
+\rhead{\small \hwdate}
+\headsep 10pt
+
+\begin{document}
+
+% \noindent \emph{Homework Notes:} 
+
+% Read and Summarize "The Indian Buffet Process: An Introduction and Review" by Griffiths and Ghahramani, JMLR, 2011.
+
+% How are the IBP and DP related?
+
+Griffiths and Ghahramani (2011) present several derivations of the Indian Buffet Process (IBP), and describe a number of applications and adaptations. By analogy to the Chinese Restaurant Process, the IBP describes customers visiting a buffet and filling their plates with its seemingly infinite number of dishes. $N$ customers enter the restaurant in sequence, and the first fills her plate with a Poisson($\alpha$) number of dishes. Then, the $i^{th}$ customer samples dishes in proportion to their popularity, with probability $\frac{m_k}{i}$, where $m_k$ is the number of previous customers who sampled dish $k$. The $i^{th}$ customer then samples $K^{(i)}_1 \sim \text{Poisson}(\frac{\alpha}{i})$ number of new dishes. The customers represent objects and their chosen dishes represent features; in this way, the IBP serves as a prior for sparse binary matrices. 
+
+Of the potentially infinite number of columns in the binary matrix $\bf{Z}$ ($N \times K$), only a finite number will have non-zero entries. This number is the effective dimension of the matrix, $K_+$. Because of the way that the Poisson parameter is reduced with each new customer, $K_+ \sim \text{Poisson}(\alpha H_N)$ (where $H_N$ is the $N^{th}$ harmonic number). By exchangeability, the number of dishes on each customer's plate is distributed Poisson($\alpha$). $\bf{Z}$ remains sparse as $K\rightarrow \infty$: effective dimensions of $\bf{Z}$ are $N \times K_+$, and the expected number of entries is $N\alpha$. In some applications this coupling of the average number of features per object and the total number of features may be undesirable, in which case the two-parameter generalization of the IBP can be applied. 
+
+The IBP and the CRP are related in more than just their analogies to cuisine. The Beta process is the de Finetti mixing distribution underlying the Indian buffet process, just as the Dirichlet process is for the CRP. This parallel helps to develop analogous derivations of the IBP, including the stick-breaking construction. The IBP can be computationally time-consuming for inference, but ongoing research has developed alternative inference strategies to the Gibbs sampler presented by Griffiths and Ghahramani that are more appropriate to other applications (such as variational inference). 
+
+
+
+\end{document}

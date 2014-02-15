@@ -27,20 +27,21 @@
 Teh, Daume and Roy (2008) introduce a new model for Bayesian agglomerative clustering based on a prior over trees derived from population genetics. 
 The prior, known as Kingman's coalescent, describes genealogies in an evolutionary process. 
 $n$ haploid (single-parent) individuals observed at time $t=0$ are assumed to have a common ancestor at $t=-\infty$. 
-The genealogies of the $n$ individuals from a directed forest, and $\pi(t)$ identifies the $m$ ancestors of $[n]$ at time $t$. 
-A coalescent event refers to the point $t<0$ when two individuals' genealogies converge at their common ancestor. 
-The time between adjacent events $\delta_i$ is distributed exponentially with $\lamda={n-i+1 \choose 2}. 
+The genealogies of the $n$ individuals form a directed forest, and $\pi(t)$ identifies the $m$ ancestors of $[n]=\{1,\ldots,n\}$ at time $t$. 
+A coalescent event refers to the point $t_i<0$ when two individuals' genealogies converge at their common ancestor. 
+The time between adjacent events $\delta_i$ is distributed exponentially with $\lambda={n-i+1 \choose 2}$. 
 Taking the limit as $n \rightarrow \infty$ we have a marginally independent, infinitely exchangeable distribution over genealogies known as the $n$-coalescent. 
 
 % How does this hierarchical clustering model compare to Bayesian Hierarchical Clustering? How does the hierarchical component of this model differ from the Hierarchical Dirichlet Process?
 
 Inference for this model, using either sequential Monte Carlo or greedy algorithms, starts in the distant past and proceeds forward, splitting the ancestry of two data points later (closer to $t=0$) the more closely dependent they are. 
-The authors present several experiments comparing the coalescent model to related methods such as Bayesian Hierarchical Clustering (BHC) and the Hierarchical Dirichlet Process (HDP). 
+The authors present several experiments comparing the coalescent model to related methods such as Bayesian Hierarchical Clustering (BHC). 
 Coalescent inference outperforms BHC in most of their experiments, likely due to the fact that the coalescent shares information across the tree, whereas the mixture model underlying BHC is flat.
 BHC also does not define a distribution over trees as the $n$-coalescent does. 
 The hierarchical component of this model also differs from the HDP insofar as the latter method uses a fragmentation process for trees, which is the reverse of the coalescent process. 
 This makes inference for the $n$-coalescent simpler than existing HDP algorithms. 
-A disadvantage of the coalescent method is that it is less efficient to compute than BHC (O$(n^2)$ for a greedy coalescent implementation versus O$(n\log n)$ for BHC). If computational efficiency is crucial and information potentially shared across the tree is minimal, BHC would be preferable to the $n$-coalescent. 
+A disadvantage of the coalescent method is that it is less efficient to compute than BHC (O$(n^2)$ for a greedy coalescent implementation versus O$(n\log n)$ for BHC). 
+If computational efficiency is crucial, BHC would be preferable to the $n$-coalescent. 
 
 
 

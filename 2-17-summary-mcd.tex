@@ -24,7 +24,13 @@
 
 % Read and Summarize Bayesian Agglomerative Clustering with Coalescents - Teh, Daume and Roy, NIPS, 2008.
 
-Teh, Daume and Roy (2008) introduce a new model for Bayesian agglomerative clustering based on a prior over trees derived from population genetics. The prior, known as Kingman's coalescent, describes genealogies in an evolutionary process. $n$ haploid (single-parent) individuals observed at time $t=0$ are assumed to have a common ancestor at some point {before -infty}. 
+Teh, Daume and Roy (2008) introduce a new model for Bayesian agglomerative clustering based on a prior over trees derived from population genetics. 
+The prior, known as Kingman's coalescent, describes genealogies in an evolutionary process. 
+$n$ haploid (single-parent) individuals observed at time $t=0$ are assumed to have a common ancestor at $t=-\infty$. 
+The genealogies of the $n$ individuals from a directed forest, and $\pi(t)$ identifies the $m$ ancestors of $[n]$ at time $t$. 
+A coalescent event refers to the point $t<0$ when two individuals' genealogies converge at their common ancestor. 
+The time between adjacent events $\delta_i$ is distributed exponentially with $\lamda={n-i+1 \choose 2}. 
+Taking the limit as $n \rightarrow \infty$ we have a marginally independent, infinitely exchangeable distribution over genealogies known as the $n$-coalescent. 
 
 % How does this hierarchical clustering model compare to Bayesian Hierarchical Clustering? How does the hierarchical component of this model differ from the Hierarchical Dirichlet Process?
 

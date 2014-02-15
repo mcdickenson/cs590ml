@@ -34,6 +34,14 @@ Taking the limit as $n \rightarrow \infty$ we have a marginally independent, inf
 
 % How does this hierarchical clustering model compare to Bayesian Hierarchical Clustering? How does the hierarchical component of this model differ from the Hierarchical Dirichlet Process?
 
+Inference for this model, using either sequential Monte Carlo or greedy algorithms, starts in the distant past and proceeds forward, splitting the ancestry of two data points later (closer to $t=0$) the more closely dependent they are. 
+The authors present several experiments comparing the coalescent model to related methods such as Bayesian Hierarchical Clustering (BHC) and the Hierarchical Dirichlet Process (HDP). 
+Coalescent inference outperforms BHC in most of their experiments, likely due to the fact that the coalescent shares information across the tree, whereas the mixture model underlying BHC is flat. 
+
+
+A disadvantage of the coalescent method is that it is less efficient to compute than BHC (O$(n^2)$ for a greedy coalescent implementation versus O$(n\log n)$ for BHC). 
+
+
 
 
 

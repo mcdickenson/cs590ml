@@ -41,9 +41,9 @@ f_* | x_*, X, y &\sim& N(\phi(x_*)^\prime \Sigma_p \Phi(K+\sigma^2_n I)^{-1}y, \
 \end{eqnarray*}
 In cases where an algorithm is defined solely by inner products in input space, we can simplify the computation of $f_*$ by defining $k(x_1, x_2)=\phi(x_1)^\prime \Sigma_p \phi(x_2)=\Sigma^{1/2}_p \phi(x_1) \cdot \Sigma^{1/2}_p \phi(x_2)$. Then, we can replace occurrences of inner products by $k(x_1, x_2$ (the ``kernel trick'').
 
-Gaussian process regression can also be understood according to the function space view, as a collection of random variables with a joint Gaussian distribution. However, we may not know the full covariance matrix of the distribution (if we did, we would have a full Gaussian distribution rather than a GP). In this case, we define a covariance function using the same kernel as above:
+Gaussian process regression can also be understood according to the function space view, as a collection of random variables with a joint Guassian distribution. However, we may not know the full covariance matrix of the distribution (if we did, we would have a full Gaussian distribution rather than a GP). In this case, we define a covariance function using the same kernel as above:
 \begin{eqnarray*}
-\text{cov}(f(x_1), f(x_2)) &=& k(x_1, x_2) = \exp(-\frac{1}{2} |x_1 - x_2|^2).
+cov(f(x_1), f(x_2)) &=& k(x_1, x_2) = \exp(-\frac{1}{2} |x_1 - x_2|^2).
 \end{eqnarray*}
 This covariance function defines a distribution over functions (hence, ``function space''). It allows us to sample a subset of input points $X_*$, fill in the covariance matrix for these points, and generate a Gaussian vector
 \begin{eqnarray*}

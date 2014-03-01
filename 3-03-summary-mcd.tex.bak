@@ -24,7 +24,7 @@
 
 Snelson, Rasmussen, and Ghahramani (2003) generalize Gaussian processes (GP) to include a nonlinear transformation step. The advantage of this generalization is that the transformation is chosen algorithmically so that the transformed data is well-modeled by a GP. This stands in contrast to ad hoc procedures used by researchers to coerce their data into a GP model, such as the log transformation. The authors refer to their approach as a warped Gaussian process (wGP). 
 
-The wGP is intended for regression applications, in which the researcher seeks the predictive distribution $P(t_{N+1}|x^{n+1}, \mathcal{D})$. Because the GP prior gives rise to a multivariate Gaussian distribution over functions $y$, we need a covariance function $C(x,x^{\prime})$. Adding the warping step, parameterized by $Psi$, transforms the negative log likelihood from the usual
+The wGP is intended for regression applicaitons, in which the researcher seeks the predictive distribution $P(t_{N+1}|x^{n+1}, \mathcal{D})$. Because the GP prior gives rise to a multivariate Gaussian distribution over functions $y$, we need a covariance function $C(x,x^{\prime})$. Adding the warping step, parameterized by $Psi$, transforms the negative log likelihood from the usual
 \begin{eqnarray*}
 \mathcal{L} &=& -\log P(t_N|X_N, \Theta) \\
 &=& \frac{1}{2} \log \text{det} C_N + \frac{1}{2}t_n^{\top}C_N^{-1}t_n + \frac{N}{2}\log 2 \pi

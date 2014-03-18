@@ -1,0 +1,29 @@
+\documentclass[12pt,letterpaper]{article}
+\include{preamble}
+
+% Edit these as appropriate
+\newcommand\course{STA571/CS590.01}
+\newcommand\semester{Spring 2014}                   % <-- current semester
+\newcommand\papertitle{Graph Classification using Signal Subgraphs}                         % <-- paper title
+\newcommand\authoryear{Jieping Ye}
+\newcommand\yourname{Matt Dickenson}                % <-- your name
+\newcommand\login{mcd31}                            % <-- your NetID
+\newcommand\hwdate{Due: 19 March, 2014}           % <-- HW due date
+
+
+\pagestyle{fancyplain}
+\headheight 60pt
+\chead{Summary of ``\papertitle''\\ ~\\}
+\lhead{\small \yourname\ \texttt{\login}\\\course}
+\rhead{\small \hwdate}
+\headsep 10pt
+
+\begin{document}
+
+% Read and summarize JT Vogelstein, WR Gray, RJ Vogelstein, CE Priebe. Graph Classification using Signal Subgraphs: Applications in Statistical Connectomics. IEEE TPAMI, vol. 35, no. 7, pp. 1539-1551, July 2013.
+
+Vogelstein et al (2013) examine whether a data set of graphs and associated classes can be trained so that we can then classify a new graph based on its properties. For this problem we desire a classifier $h: \mathcal{G} \rightarrow \mathcal{Y}$ maps graphs $\mathcal{G}$ to classes $\mathcal{Y}$. The authors develop a method that focuses on the set of edges that are probabilistically different by class in the training data. This portion of the graph that is conditioned on class is referred to as the signal-subgraph. The estimators developed satisfy a number of desiderata, including asymptotic efficiency, consistency, coherency, and robustness to model misspecifications. 
+
+One example application of the method is to classify ``brain graphs'' by sex. The method outperforms previous approaches for this application because it incorporates both the edge structure and the vertex labels, whereas other methods focus on one or the other. Another nice property of the method developed here is that it avoids the need to decompose the graph into various proposals for sufficient statistics, such as eigenvalue decompositions. The authors note that their method's identification of signal-subgraphs can be thought of as a local sparse, low rank graph decomposition. Another improvement is the development of an explicit statistical model rather than heuristic pattern recognition. This work represents an important new direction in machine learning research.
+
+\end{document}

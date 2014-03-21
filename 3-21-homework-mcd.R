@@ -42,7 +42,7 @@ rational_quad = function(x1, x2, l=1, alpha=0.5) {
   return(sigma)
 }
 
-# try gamma = 1/2, 1, 2
+# gamma exponential covariance function
 gamma_expo = function(x1, x2, l, gamma=1){
   sigma = matrix(0, nrow=length(x1), ncol=length(x1))
   for (i in 1:nrow(sigma)) {
@@ -53,19 +53,6 @@ gamma_expo = function(x1, x2, l, gamma=1){
   }
   return(sigma) 
 }
-
-
-# calc_sigma1 = function(x1, x2, l=1) {
-#   sigma = matrix(0, nrow=length(x1), ncol=length(x1))
-#   for (i in 1:nrow(sigma)) {
-#     for (j in 1:ncol(sigma)) {
-#       r = abs(x1[i]-x2[j])
-#       # sigma[i,j] = exp(-0.5*(abs(x1[i]-x2[j])/l)^2)
-#       # sigma[i,j] = ( 1 + (r^2)/(2 * alpha * l^2) )^(-alpha)
-#     }
-#   }
-#   return(sigma)
-# }
 
 plot_gp = function(nsamps=3, mu=0, l=1, alpha=0.5, gamma=1, cvfun="squared exponential"){
   xs = seq(-10,10,length.out=200)
@@ -103,9 +90,6 @@ plot_gp = function(nsamps=3, mu=0, l=1, alpha=0.5, gamma=1, cvfun="squared expon
 }
 
 
-
-# setwd('~/desktop')
-setwd('~/github/cs590ml/hw321')
 for(n in c(3, 5, 10)){
   for(m in c(-1, 0, 1)){
     for(l in c(1, 2, 3)){
@@ -116,7 +100,7 @@ for(n in c(3, 5, 10)){
           pdf(filename)
             plot_gp(nsamps=n, mu=m, l=l, cvfun=cv)
           dev.off()
-        } else if(cv=="rational quadration"){
+        } else if(cv=="rational quadratic"){
           for(a in c(0.5, 2, 3)){
             filename = paste("n", n, "-m", m, "-l", l, sep="")
             filename = paste(filename, "-a", a*2, ".pdf", sep="")
@@ -145,3 +129,42 @@ plot_gp(nsamps=5, mu=0)
 plot_gp(nsamps=5, mu=0, cvfun="rational quadratic")
 
 plot_gp(nsamps=5, mu=0, cvfun="gamma exponential")
+
+
+
+# cv = "squared exponential"
+# cv = "rational quadratic"
+cv = "gamma exponential"
+
+for(n in c(3, 5, 10)){
+  for(m in c(-1, 0, 1)){
+    cat("\\begin{figure}\n")
+    cat("\\begin{center}\n")
+    for(l in c(1, 2, 3)){
+      
+      if(cv=="squared exponential"){
+        filename = paste("n", n, "-m", m, "-l", l, sep="")
+        filename = paste(filename, ".pdf", sep="")
+        
+        cat(paste("\\includegraphics[scale=0.2]{hw321/", filename, "}\n", sep=""))
+        
+      } else if(cv=="rational quadratic"){
+        for(a in c(0.5, 2, 3)){
+          filename = paste("n", n, "-m", m, "-l", l, sep="")
+          filename = paste(filename, "-a", a*2, ".pdf", sep="")
+          cat(paste("\\includegraphics[scale=0.2]{hw321/", filename, "}\n", sep=""))
+        }
+      } else if(cv=="gamma exponential"){
+        for(g in c(0.5, 1, 2)){
+          filename = paste("n", n, "-m", m, "-l", l, sep="")
+          filename = paste(filename, "-g", g*2, ".pdf", sep="")
+          cat(paste("\\includegraphics[scale=0.2]{hw321/", filename, "}\n", sep=""))
+        }
+      }
+    }
+  cat("\\end{center}\n")
+  cat("\\end{figure}\n")
+}
+}
+
+

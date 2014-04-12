@@ -1,0 +1,31 @@
+\documentclass[12pt,letterpaper]{article}
+\include{preamble}
+
+% Edit these as appropriate
+\newcommand\course{STA571/CS590.01}
+\newcommand\semester{Spring 2014}                   % <-- current semester
+\newcommand\papertitle{Spatial Normalized Gamma Processes}    % <-- paper title
+\newcommand\authoryear{Rao and Teh}
+\newcommand\yourname{Matt Dickenson}                % <-- your name
+\newcommand\login{mcd31}                            % <-- your NetID
+\newcommand\hwdate{Due: 9 April, 2014}           % <-- HW due date
+
+
+\pagestyle{fancyplain}
+\headheight 60pt
+\chead{Summary of ``\papertitle''\\ ~\\}
+\lhead{\small \yourname\ \texttt{\login}\\\course}
+\rhead{\small \hwdate}
+\headsep 10pt
+
+\begin{document}
+
+% Read and summarize paper
+Rao and Teh introduce a framework for contructing dependent Dirichlet processes (DPs). This framework is useful for when the exchangeability assumption does not hold, for example in models where key parameters are likely to shift over time and space. The dependent DPs are constructed by marginalizing a gamma process over a space in $\mathbb{R}^n$. Inference on the model can be conducted via MCMC with Gibbs sampling and a choice of three different Metropolis-Hastings proposals.
+
+The process for constructing a set of dependend DPs is relatively straightforward. First, a Gamma Process ($\Gamma$P) is defined over an extended space. Then, regions of that space are each associated with a DP. Each DP is defined by marginalizing and normalizing the $\Gamma$P over the region associated with it. The overlap between regions determines the amount of dependence between the DPs. We can think of this process visually with point masses $\theta$ and weights $w>0$. Consider a Poisson process over the product space with mean $\lambda(d\theta dw) = \alpha(d \theta)w^{-1}e^{-w}dw$, where $\alpha$ is the base measure of the $\Gamma$P. A sample from the corresponding $\Gamma$P can be defined as $G= \sum_{i=1}^{\infty} w_i d_{\theta_i} \sim \Gamma \text{P} (\alpha)$. These samples can be normalized over any region to yield $D=G/G(\Theta) \sim DP(\alpha$. 
+
+In the examples presented by Rao and Teh, the spatial component of the normalized Gamma processes is $\mathbb{R}^1$, representing a timeline. For model inference they derive a Gibbs sampler where regional DPs are integrated out in a manner analogous to the Chinese restaurant process. They also present several Metropolis-Hastings proposals that can improve mixing. Their model can be generalized to higher dimensional space, which is promising for other applications such as the distribution of biological populations in physical regions. Other extensions of the model include allowing the point atoms to vary, incorporating alternative Metropolis-Hastings proposals, and using other spatial normalized random measures. 
+
+
+\end{document}

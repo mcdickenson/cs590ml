@@ -1,32 +1,53 @@
-plot.R
-
 rm(list=ls())
 setwd('~/github/olympifier')
-library(evtree)
-library(mclust)
-library(nnet)
-library(party)
-library(RColorBrewer)
-library(randomForest)
+
+# set up workspace
+library(gplots)
 
 
-# load data
-athletes = read.csv('data/athletes-clean.csv', header=TRUE, as.is=TRUE)
-dim(athletes)
-head(athletes)
-athletes = athletes[-which(athletes$Sport=="Athletics"),]
-athletes$sport.factor = as.factor(athletes$Sport)
-athletes$event.factor = as.factor(athletes$FirstEvent)
-length(unique(athletes$sport.factor))
-sort(unique(athletes$sport.factor))
+# load matrices
 
+################################
+# plotting function
+myHeatmap = function(matrix){
+  heatmap(matrix, Rowv=NA, Colv=NA,
+    col=cm.colors(256), 
+    # col=rev(heat.colors(256)),
+    # scale="none",
+    scale="col",
+    margins=c(5,10))
+}
 
-# set up training and test sets
-features = c("Age", "Height", "Weight", "Female")
-target = "sport.factor"
-summary(athletes$kfold)
-trnData = athletes[athletes$kfold <= 5, features]
-tstData = athletes[athletes$kfold >  5, features]
-trnClass = athletes[athletes$kfold <= 5, target]
-tstClass = athletes[athletes$kfold >  5, target]
-dim(trnData)
+################################
+# neural net
+# sportANN = nnet(trnData, ideal,
+#   size=30,
+#   MaxNWts=1500,
+#   softmax=TRUE,
+#   # censored=TRUE,
+#   skip=TRUE,
+#   maxit=1000)
+# save(sportANN, file="rcode/sportANN.rda")
+load("rcode/sportANN.rda")
+
+trnPred = predict(sportANN, trnData, type="class")
+table(trnPred, trnClass)
+1-mean(trnPred == trnClass)
+
+tstPred = predict(sportANN, tstData, type="class")
+table(tstPred, tstClass)
+1-mean(tstPred == tstClass)
+
+sportANNmatrix = table(tstClass, tstPred)
+
+# plot
+myHeatmap(sportANNmatrix)
+# todo: rotate
+
+heatmap.2(sportANNmatrix,
+  Rowv=NA, Colv=NA,
+  col=cm.colors(256),
+  scale="col",
+  dendrogram="none",
+  key=FALSE)
+# todo: remove margins (or move labels to opposite sides)

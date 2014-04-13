@@ -1,0 +1,34 @@
+\documentclass[12pt,letterpaper]{article}
+\include{preamble}
+
+% Edit these as appropriate
+\newcommand\course{STA571/CS590.01}
+\newcommand\semester{Spring 2014}                   % <-- current semester
+\newcommand\papertitle{Markov Chain Monte Carlo with People}    % <-- paper title
+\newcommand\authoryear{Sanborn and Griffiths}
+\newcommand\yourname{Matt Dickenson}                % <-- your name
+\newcommand\login{mcd31}                            % <-- your NetID
+\newcommand\hwdate{Due: 9 April, 2014}           % <-- HW due date
+
+
+\pagestyle{fancyplain}
+\headheight 60pt
+\chead{Summary of ``\papertitle''\\ ~\\}
+\lhead{\small \yourname\ \texttt{\login}\\\course}
+\rhead{\small \hwdate}
+\headsep 10pt
+
+\begin{document}
+
+% Read and summarize paper
+In an interesting change from previous papers in this seminar, Sanborn and Griffiths explore how the behavior of human learners corresponds to MCMC. To do this, they conduct two experiments in which human subjects choose to accept or reject a proposal based on (the subject's perception of) whether it belongs to a specified category. In deciding to accept the proposed change $x^*$ or keep the current state $x$, the subject's mental model for the acceptance probability is assumed to be
+\begin{eqnarray*}
+A(x^*; x) &=& \frac{ p(x^*|c)^{\gamma} }{ p(x^*|c)^{\gamma} + p(x|c)^{\gamma} }
+\end{eqnarray*}
+where the $\gamma$ exponent helps to account for the tendency in human subjects to behave more deterministically than probabilistically. This model is similar to the Barker acceptance function for Metropolis sampling, which is also known as the Luce choice rule in psychological research. 
+
+Two sets of results are presented. In the first experiment, subjects were assigned to one of four conditions (corresponding to two means and two standard deviations of Gaussian distributions). Subjects were shown schematic images of fish and asked which came from a fish farm (experimental instructions suggested in layman's terms that the heights of farmed fish are Gaussian distributed while heights of fish from the ocean are uniformly distributed). Subjects were trained in sessions where the correct answer was revealed after they made their choice to accept or reject the proposal. Subjects were able to approximately recover the means of the Gaussian distributions, whereas they tended to overestimate standard deviations. In the second experiment subjects were asked to classify stick figure images as representing a giraffe, horse, cat, or dog. Less information is given about this experiment; we are told only that sequences tended to converge.
+
+Despite these promising results, there are a number of issues that are not addressed in the paper. First, there is an extensive literature on the shortcomings of probabilistic reasoning in human subjects (see, for example, the work of Daniel Kahneman and Amos Tversky and subsequent research). More problematically, the details presented about the experiments are relatively coarse. For example, data from nine recruited subjects--nearly 20 percent of the total recruits--was discarded because it exhibited behavior that does not correspond to the assumptions of MCMC. Of the remaining subjects, each conducted 300 trials (120 in an initial training period, then 60 MCMC trials interleaved with 60 training trials, and a final block of 60 test trials) but only 240 are presented for the four subjects in Figure 2. It is unclear which of the trials was selected for inclusion in this figure, or why how the four presented subjects were chosen. Almost no information is given about the selection or behavior of subjects in the second experiment, except for a single subject. With so little information, it is difficult to assess the validity or reliability of these results. 
+
+\end{document}

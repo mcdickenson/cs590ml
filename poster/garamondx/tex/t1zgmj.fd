@@ -1,0 +1,110 @@
+%Filename: t1zgmj.fd
+%Created by: tex zgm-drv
+%Created using fontinst v1.933
+
+%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY
+
+\ProvidesFile{t1zgmj.fd}
+   [2012/10/29 Fontinst v1.933 font definitions for T1/zgmj.]
+
+\DeclareFontFamily{T1}{zgmj}{}
+
+\expandafter\ifx\csname zgm@Scale\endcsname\relax
+ \let\zgm@@Scale\@empty
+\else
+ \edef\zgm@@Scale{s*[\csname zgm@Scale\endcsname]}%
+\fi
+
+\def\zgm@tmp{\ifzgm@swq \def\zgm@@swq{-swq}\fi}
+\let\zgm@@swq\@empty
+\ifdefined\zgm@swqtrue
+  \zgm@tmp
+\fi
+
+\newif\ifzgm@@osfI
+\expandafter\ifx\csname zgm@osfIval\endcsname\relax
+\else
+  \csname zgm@@osfI\zgm@osfIval \endcsname
+\fi
+
+\DeclareFontFamily{T1}{zgmj}{}
+
+\ifzgm@@osfI
+  \DeclareFontShape{T1}{zgmj}{m}{n}{
+   <-> \zgm@@Scale   T1-zgm-r-osfI\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{m}{it}{
+   <-> \zgm@@Scale   T1-zgm-ri-osfI\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{b}{n}{
+   <-> \zgm@@Scale   T1-zgm-b-osfI\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{b}{it}{
+   <-> \zgm@@Scale   T1-zgm-bi-osfI\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{m}{sc}{
+   <-> \zgm@@Scale   T1-zgm-r-osfI-sc\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{b}{sc}{
+   <-> \zgm@@Scale   T1-zgm-b-osfI-sc\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{m}{scit}{
+   <-> \zgm@@Scale   T1-zgm-ri-osfI-sc\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{b}{scit}{
+   <-> \zgm@@Scale   T1-zgm-bi-osfI-sc\zgm@@swq
+  }{}
+
+
+\else
+  \DeclareFontShape{T1}{zgmj}{m}{n}{
+   <-> \zgm@@Scale   T1-zgm-r-osf\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{m}{sc}{
+   <-> \zgm@@Scale   T1-zgm-r-osf-sc\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{b}{sc}{
+   <-> \zgm@@Scale   T1-zgm-b-osf-sc\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{m}{scit}{
+   <-> \zgm@@Scale   T1-zgm-ri-osf-sc\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{b}{scit}{
+   <-> \zgm@@Scale   T1-zgm-bi-osf-sc\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{b}{n}{
+   <-> \zgm@@Scale   T1-zgm-b-osf\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{m}{it}{
+   <-> \zgm@@Scale   T1-zgm-ri-osf\zgm@@swq
+  }{}
+
+  \DeclareFontShape{T1}{zgmj}{b}{it}{
+   <-> \zgm@@Scale   T1-zgm-bi-osf\zgm@@swq
+  }{}
+\fi
+
+\DeclareFontShape{T1}{zgmj}{bx}{sc}{<->ssub * zgmj/b/sc}{}
+\DeclareFontShape{T1}{zgmj}{bx}{scit}{<->ssub * zgmj/b/scit}{}
+\DeclareFontShape{T1}{zgmj}{bx}{n}{<->ssub * zgmj/b/n}{}
+\DeclareFontShape{T1}{zgmj}{m}{sl}{<->ssub * zgmj/m/it}{}
+\DeclareFontShape{T1}{zgmj}{bx}{it}{<->ssub * zgmj/b/it}{}
+\DeclareFontShape{T1}{zgmj}{b}{sl}{<->ssub * zgmj/b/it}{}
+\DeclareFontShape{T1}{zgmj}{bx}{sl}{<->ssub * zgmj/b/sl}{}
+\DeclareFontShape{T1}{zgmj}{m}{fscn}{<->ssub * zgmj/m/sc}{} % may be needed with mdugm
+\DeclareFontShape{T1}{zgmj}{b}{fscn}{<->ssub * zgmj/b/sc}{}
+
+\endinput

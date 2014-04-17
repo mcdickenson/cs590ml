@@ -1,0 +1,33 @@
+%Filename: newG8-Osf-bolita.mtx
+%Created by: tex zgm-drv
+%Created using: \afmtomtx{newG8-Osf-bolita}{newG8-Osf-bolita}
+
+%This file contains the information of newG8-Osf-bolita.afm in a form
+%more easily read by TeX. It is used by the fontinst package.
+
+%THIS FILE CAN BE DELETED.
+
+\relax
+\metrics
+
+\needsfontinstversion{1.933}
+
+\storemapdata{newG8-Osf-bolita}{\fromafm{newG8-Osf-bolita}{newG8-Osf-bolita}}{}
+\setint{italicslant}{286}
+\setint{underlinethickness}{50}
+\setint{maxheight}{677}
+\setint{maxdepth_neg}{-217}
+\setint{descender_neg}{-217}
+\setrawglyph{zero}{newG8-Osf-bolita}{10pt}{48}{503}{471}{8}{16}
+\setrawglyph{one}{newG8-Osf-bolita}{10pt}{49}{360}{469}{8}{4}
+\setrawglyph{two}{newG8-Osf-bolita}{10pt}{50}{540}{469}{7}{0}
+\setrawglyph{three}{newG8-Osf-bolita}{10pt}{51}{367}{467}{199}{77}
+\setrawglyph{four}{newG8-Osf-bolita}{10pt}{52}{535}{468}{210}{0}
+\setrawglyph{five}{newG8-Osf-bolita}{10pt}{53}{452}{469}{209}{56}
+\setrawglyph{six}{newG8-Osf-bolita}{10pt}{54}{541}{630}{7}{24}
+\setrawglyph{seven}{newG8-Osf-bolita}{10pt}{55}{526}{469}{211}{85}
+\setrawglyph{eight}{newG8-Osf-bolita}{10pt}{56}{526}{677}{12}{66}
+\setrawglyph{nine}{newG8-Osf-bolita}{10pt}{57}{496}{461}{217}{11}
+\setrawglyph{colon}{newG8-Osf-bolita}{10pt}{58}{466}{477}{6}{33}
+
+\endmetrics

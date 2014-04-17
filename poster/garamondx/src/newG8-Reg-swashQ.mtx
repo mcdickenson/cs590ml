@@ -1,0 +1,21 @@
+%Filename: newG8-Reg-swashQ.mtx
+%Created by: tex zgm-drv
+%Created using: \generalpltomtx{newG8-Reg}{newG8-Reg-swashQ}{pl}{swashQ}
+
+%This file contains the information of newG8-Reg.pl in a form
+%more easily read by TeX. It is used by the fontinst package.
+
+%THIS FILE CAN BE DELETED.
+
+\relax
+\metrics
+
+\needsfontinstversion{1.933}
+
+\storemapdata{newG8-Reg-swashQ}{\frompl{newG8-Reg}}{}
+
+\setdim{designsize}{10.0pt}
+\setdim{designunits}{1.0pt}
+\setrawglyph{Q.swsh}{newG8-Reg}{10.0pt}{81}{848}{708}{244}{0}
+
+\endmetrics

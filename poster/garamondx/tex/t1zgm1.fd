@@ -1,0 +1,37 @@
+%Filename: t1zgm1.fd
+%Created by: tex zgm-drv
+%Created using fontinst v1.933
+
+%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY
+
+\ProvidesFile{t1zgm1.fd}
+   [2013/03/06 Fontinst v1.933 font definitions for T1/zgm1.]
+
+\expandafter\ifx\csname zgm@Scale\endcsname\relax
+ \let\zgm@@Scale\@empty
+\else
+ \edef\zgm@@Scale{s*[\csname zgm@Scale\endcsname]}%
+\fi
+
+
+\DeclareFontFamily{T1}{zgm1}{}
+
+\DeclareFontShape{T1}{zgm1}{m}{n}{
+   <-> \zgm@@Scale  NewG8-sups
+}{}
+
+
+\DeclareFontShape{T1}{zgm1}{bx}{sc}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{b}{sc}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{m}{it}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{bx}{it}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{b}{it}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{bx}{scit}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{bx}{n}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{m}{sl}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{bx}{it}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{b}{sl}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{bx}{sl}{<->ssub * zgm1/m/n}{}
+\DeclareFontShape{T1}{zgm1}{m}{fscn}{<->ssub * zgm1/m/n}{} % needed with mathdesign[ugm]
+\DeclareFontShape{T1}{zgm1}{b}{fscn}{<->ssub * zgm1/m/n}{}
+\endinput

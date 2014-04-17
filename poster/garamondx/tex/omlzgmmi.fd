@@ -1,0 +1,31 @@
+%Filename: omlzgmmi.fd
+%Created by: tex zgmmi-drv
+%Created using fontinst v1.933
+
+%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY
+
+\ProvidesFile{omlzgmmi.fd}
+   [2012/11/18 Fontinst v1.933 font definitions for OML/zgmmi.]
+
+\expandafter\ifx\csname ntxmath@scaled\endcsname\relax
+  \let\ntxmath@@scaled\@empty%
+\else
+  \edef\ntxmath@@scaled{s*[\csname ntxmath@scaled\endcsname]}%
+\fi
+
+\DeclareFontFamily{OML}{zgmmi}{\skewchar \font =127}
+
+\DeclareFontShape{OML}{zgmmi}{m}{it}{
+   <-> \ntxmath@@scaled zgmmi
+}{}
+
+\DeclareFontShape{OML}{zgmmi}{b}{it}{
+   <-> \ntxmath@@scaled zgmbmi
+}{}
+
+\DeclareFontShape{OML}{zgmmi}{m}{sl}{<->ssub * zgmmi/m/it}{}
+\DeclareFontShape{OML}{zgmmi}{bx}{it}{<->ssub * zgmmi/b/it}{}
+\DeclareFontShape{OML}{zgmmi}{b}{sl}{<->ssub * zgmmi/b/it}{}
+\DeclareFontShape{OML}{zgmmi}{bx}{sl}{<->ssub * zgmmi/b/sl}{}
+
+\endinput

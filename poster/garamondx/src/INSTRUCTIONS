@@ -1,0 +1,10 @@
+Instructions for modifying garamondx font metrics.
+
+1. Copy this entire folder to an area in which you have write permission.
+2. Make changes in the adjust-gm-*.mtx files.
+3. Run
+tex zgm-drv
+to recreate new vpl files.
+4. Make tfm/vf files from the vpl files. With a bash shell, you could use:
+for f in T*.vpl; do ff=${f%.*}; vptovf ${ff} ${ff} ${ff}; done
+5. Replace the distributed tfm/vf files with the newly generated tfm/vf files.

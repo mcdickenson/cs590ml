@@ -1,0 +1,500 @@
+\input fontinst.sty
+\needsfontinstversion{1.933}
+
+\declareencoding{TEX-BASE-ENCODING}{8r}
+\declareencoding{UNSPECIFIED}{8r}
+
+\recordtransforms{zgm.rec}
+%\afmtomtx{newG8-Osf-reg}{newG8-Osf-reg}
+%\afmtomtx{newG8-Osf-bol}{newG8-Osf-bol}
+%\afmtomtx{newG8-Osf-ita}{newG8-Osf-ita}
+%\afmtomtx{newG8-Osf-bolita}{newG8-Osf-bolita}
+%\afmtomtx{newG8-additions-reg}{newG8-additions-reg}
+%\afmtomtx{newG8-additions-bol}{newG8-additions-bol}
+%\afmtomtx{newG8-additions-ita}{newG8-additions-ita}
+%\afmtomtx{newG8-additions-bolita}{newG8-additions-bolita}
+%\generalpltomtx{linlibertineosf}{linlibertineosf}{pl}{t1}
+% Next lines make zgmr[c]8r.mtx with full kerning and zgmr[c]8r.pl without.
+%\transformfont{zgmr8r}{\reencodefont{8r}{\fromafm{newG8-Reg}}}
+%\transformfont{zgmr8c}{\reencodefont{ts1}{\fromafm{newG8-Reg}}}
+%\transformfont{zgmr-t8c}{\reencodefont{ts1}{\fromafm{zgmr-tc}}}
+%\transformfont{zgmrc8r}{\reencodefont{8r}{\fromafm{newG8-Reg-SC}}}
+%\transformfont{zgmbc8r}{\reencodefont{8r}{\fromafm{newG8-Bol-SC}}}
+%\transformfont{zgmri8r}{\reencodefont{8r}{\fromafm{newG8-Ita}}}
+%\transformfont{zgmri8c}{\reencodefont{ts1}{\fromafm{newG8-Ita}}}
+%\transformfont{zgmri-t8c}{\reencodefont{ts1}{\fromafm{zgmri-tc}}}
+%\transformfont{zgmric8r}{\reencodefont{8r}{\fromafm{newG8-Ita-SC}}}
+%\transformfont{zgmbi8r}{\reencodefont{8r}{\fromafm{newG8-BolIta}}}
+%\transformfont{zgmbi8c}{\reencodefont{ts1}{\fromafm{newG8-BolIta}}}
+%\transformfont{zgmbi-t8c}{\reencodefont{ts1}{\fromafm{zgmbi-tc}}}
+%\transformfont{zgmbic8r}{\reencodefont{8r}{\fromafm{newG8-BolIta-SC}}}
+
+%\transformfont{zgmr-digits}{\reencodefont{8r}{\fromafm{newG8-Osf-reg}}}
+%\transformfont{zgmri-digits}{\reencodefont{8r}{\fromafm{newG8-Osf-ita}}}
+%\transformfont{zgmb-digits}{\reencodefont{8r}{\fromafm{newG8-Osf-bol}}}
+%\transformfont{zgmbi-digits}{\reencodefont{8r}{\fromafm{newG8-Osf-bolita}}}
+%\transformfont{zgmri-sc}{\reencodefont{8r}{\fromafm{newG8-additions-ita}}}
+%\transformfont{zgmb-sc}{\reencodefont{8r}{\fromafm{newG8-additions-bol}}}
+%\transformfont{zgmbi-sc}{\reencodefont{8r}{\fromafm{newG8-additions-bolita}}}
+%\transformfont{zgmb8r}{\reencodefont{8r}{\fromafm{newG8-Bol}}}
+%\transformfont{zgmb8c}{\reencodefont{ts1}{\fromafm{newG8-Bol}}}
+%\transformfont{zgmb-t8c}{\reencodefont{ts1}{\fromafm{zgmb-tc}}}
+%\transformfont{zgmri8r}{\reencodefont{8r}{\fromafm{newG8-Ita}}}
+%\transformfont{zgmbi8r}{\reencodefont{8r}{\fromafm{newG8-BolIta}}}
+%\transformfont{newG8-Reg-swq}{\reencodefont{swashQ}{\fromafm{newG8-Reg}}}
+%\transformfont{newG8-Ita-swq}{\reencodefont{swashQ}{\fromafm{newG8-Ita}}}
+%\transformfont{newG8-Bol-swq}{\reencodefont{swashQ}{\fromafm{newG8-Bol}}}
+%\transformfont{newG8-BolIta-swq}{\reencodefont{swashQ}{\fromafm{newG8-BolIta}}}
+%\generalpltomtx{newG8-Reg-swq}{newG8-Reg-swq}{vpl}{t1}
+%\generalpltomtx{newG8-Ita-swq}{newG8-Ita-swq}{vpl}{t1}
+%\generalpltomtx{newG8-Bol-swq}{newG8-Bol-swq}{vpl}{t1}
+%\generalpltomtx{newG8-BolIta-swq}{newG8-BolIta-swq}{vpl}{t1}
+%\reglyphfonts
+%\renameglyph{oldone}{one}
+%\renameglyph{one}{colon}
+%\reglyphfont{zgmr-digitsI}{zgmr-digits}
+%\reglyphfont{zgmb-digitsI}{zgmb-digits}
+%\reglyphfont{zgmri-digitsI}{zgmri-digits}
+%\reglyphfont{zgmbi-digitsI}{zgmbi-digits}
+%\endreglyphfonts
+
+%\bye
+
+\installfonts
+
+\installfamily{T1}{zgmx}{}
+\installfont{T1-zgm-r-lf}%
+{zgmr8r,%
+newG8-Reg-swq encoding T1,% Eng, eng
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmx}{m}{n}{}
+\installfont{T1-zgm-r-lf-sc}%
+{zgmrc8r,%
+newG8-Reg-swq encoding T1,%
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmx}{m}{sc}{}
+\installfont{T1-zgm-b-lf-sc}%
+{zgmbc8r,%
+newG8-Bol-swq encoding T1,%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmx}{b}{sc}{}
+\installfont{T1-zgm-ri-lf-sc}%
+{zgmric8r,%
+newG8-Ita-swq encoding T1,%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmx}{m}{scit}{}
+\installfont{T1-zgm-bi-lf-sc}%
+{zgmbic8r,%
+newG8-BolIta-swq encoding T1,%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmx}{b}{scit}{}
+\installfont{T1-zgm-b-lf}%
+{zgmb8r,%
+newG8-Bol-swq encoding T1,%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmx}{b}{n}{}
+\installfont{T1-zgm-ri-lf}%
+{zgmri8r,%
+newG8-Ita-swq encoding T1,%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmx}{m}{it}{}
+\installfont{T1-zgm-bi-lf}%
+{zgmbi8r,%
+newG8-BolIta-swq encoding T1,%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmx}{b}{it}{}
+%%%%% Now repeat with swashQ
+\installfont{T1-zgm-r-lf-swq}%
+{zgmr8r,%
+\metrics \unsetglyph{Q},%
+newG8-Reg-swq encoding T1,%
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmx}{m}{n}{}
+\installfont{T1-zgm-r-lf-sc-swq}%
+{zgmrc8r,%
+\metrics \unsetglyph{Q},%
+newG8-Reg-swq encoding T1,%
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmx}{m}{sc}{}
+\installfont{T1-zgm-b-lf-sc-swq}%
+{zgmbc8r,%
+\metrics \unsetglyph{Q},%
+newG8-Bol-swq encoding T1,%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmx}{b}{sc}{}
+\installfont{T1-zgm-ri-lf-sc-swq}%
+{zgmric8r,%
+\metrics \unsetglyph{Q},%
+newG8-Ita-swq encoding T1,%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmx}{m}{scit}{}
+\installfont{T1-zgm-bi-lf-sc-swq}%
+{zgmbic8r,%
+\metrics \unsetglyph{Q},%
+newG8-BolIta-swq encoding T1,%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmx}{b}{scit}{}
+\installfont{T1-zgm-b-lf-swq}%
+{zgmb8r,%
+\metrics \unsetglyph{Q},%
+newG8-Bol-swq encoding T1,%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmx}{b}{n}{}
+\installfont{T1-zgm-ri-lf-swq}%
+{zgmri8r,%
+\metrics \unsetglyph{Q},%
+newG8-Ita-swq encoding T1,%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmx}{m}{it}{}
+\installfont{T1-zgm-bi-lf-swq}%
+{zgmbi8r,%
+\metrics \unsetglyph{Q},%
+newG8-BolIta-swq encoding T1,%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmx}{b}{it}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\installfamily{T1}{zgmj}{}
+\installfont{T1-zgm-r-osf}%
+{zgmr8r,%
+newG8-Reg-swq encoding T1,%
+unsetnum,%
+zgmr-digits,%
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmj}{m}{n}{}
+\installfont{T1-zgm-r-osfI}%
+{zgmr8r,%
+newG8-Reg-swq encoding T1,%
+unsetnum,%
+zgmr-digitsI,%
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmj}{m}{n}{}
+\installfont{T1-zgm-r-osf-sc}%
+{zgmrc8r,%
+newG8-Reg-swq encoding T1,%
+unsetnum,%
+zgmr-digits,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmj}{m}{sc}{}
+\installfont{T1-zgm-r-osfI-sc}%
+{zgmrc8r,%
+newG8-Reg-swq encoding T1,%
+unsetnum,%
+zgmr-digitsI,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmj}{m}{sc}{}
+\installfont{T1-zgm-b-osf-sc}%
+{zgmbc8r,%
+newG8-Bol-swq encoding T1,%
+unsetnum,%
+zgmb-digits,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmj}{b}{sc}{}
+\installfont{T1-zgm-b-osfI-sc}%
+{zgmbc8r,%
+newG8-Bol-swq encoding T1,%
+unsetnum,%
+zgmb-digitsI,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmj}{b}{sc}{}
+\installfont{T1-zgm-ri-osf-sc}%
+{zgmric8r,%
+newG8-Ita-swq encoding T1,%
+unsetnum,%
+zgmri-digits,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmj}{m}{scit}{}
+\installfont{T1-zgm-ri-osfI-sc}%
+{zgmric8r,%
+newG8-Ita-swq encoding T1,%
+unsetnum,%
+zgmri-digitsI,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmj}{m}{scit}{}
+\installfont{T1-zgm-bi-osf-sc}%
+{zgmbic8r,%
+newG8-BolIta-swq encoding T1,%
+unsetnum,%
+zgmbi-digits,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmj}{b}{scit}{}
+\installfont{T1-zgm-bi-osfI-sc}%
+{zgmbic8r,%
+newG8-BolIta-swq encoding T1,%
+unsetnum,%
+zgmbi-digitsI,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmj}{b}{scit}{}
+\installfont{T1-zgm-b-osf}%
+{zgmb8r,%
+newG8-Bol-swq encoding T1,%
+unsetnum,%
+zgmb-digits,%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmj}{b}{n}{}
+\installfont{T1-zgm-b-osfI}%
+{zgmb8r,%
+newG8-Bol-swq encoding T1,%
+unsetnum,%
+zgmb-digitsI,%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmj}{b}{n}{}
+\installfont{T1-zgm-ri-osf}%
+{zgmri8r,%
+newG8-Ita-swq encoding T1,%
+unsetnum,%
+zgmri-digits,%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmj}{m}{it}{}
+\installfont{T1-zgm-ri-osfI}%
+{zgmri8r,%
+newG8-Ita-swq encoding T1,%
+unsetnum,%
+zgmri-digitsI,%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmj}{m}{it}{}
+\installfont{T1-zgm-bi-osf}%
+{zgmbi8r,%
+newG8-BolIta-swq encoding T1,%
+unsetnum,%
+zgmbi-digits,%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmj}{b}{it}{}
+\installfont{T1-zgm-bi-osfI}%
+{zgmbi8r,%
+newG8-BolIta-swq encoding T1,%
+unsetnum,%
+zgmbi-digitsI,%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmj}{b}{it}{}
+%%%%%repeat with swq
+\installfont{T1-zgm-r-osf-swq}%
+{zgmr8r,%
+unsetnum,%
+zgmr-digits,%
+\metrics \unsetglyph{Q},%
+newG8-Reg-swq encoding T1,%
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmj}{m}{n}{}
+\installfont{T1-zgm-r-osfI-swq}%
+{zgmr8r,%
+unsetnum,%
+zgmr-digitsI,%
+\metrics \unsetglyph{Q},%
+newG8-Reg-swq encoding T1,%
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmj}{m}{n}{}
+\installfont{T1-zgm-r-osf-sc-swq}%
+{zgmrc8r,%
+unsetnum,%
+zgmr-digits,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+\metrics \unsetglyph{Q},%
+newG8-Reg-swq encoding T1,%
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmj}{m}{sc}{}
+\installfont{T1-zgm-r-osfI-sc-swq}%
+{zgmrc8r,%
+unsetnum,%
+zgmr-digitsI,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+\metrics \unsetglyph{Q},%
+newG8-Reg-swq encoding T1,%
+adjust-gm-r,%
+newlatin}
+{t1}{T1}{zgmj}{m}{sc}{}
+\installfont{T1-zgm-b-osf-sc-swq}%
+{zgmbc8r,%
+unsetnum,%
+zgmb-digits,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+\metrics \unsetglyph{Q},%
+newG8-Bol-swq encoding T1,%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmj}{b}{sc}{}
+\installfont{T1-zgm-b-osfI-sc-swq}%
+{zgmbc8r,%
+unsetnum,%
+zgmb-digitsI,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+\metrics \unsetglyph{Q},%
+newG8-Bol-swq encoding T1,%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmj}{b}{sc}{}
+\installfont{T1-zgm-ri-osf-sc-swq}%
+{zgmric8r,%
+unsetnum,%
+zgmri-digits,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+\metrics \unsetglyph{Q},%
+newG8-Ita-swq encoding T1,%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmj}{m}{scit}{}
+\installfont{T1-zgm-ri-osfI-sc-swq}%
+{zgmric8r,%
+unsetnum,%
+zgmri-digitsI,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+\metrics \unsetglyph{Q},%
+newG8-Ita-swq encoding T1,%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmj}{m}{scit}{}
+\installfont{T1-zgm-bi-osf-sc-swq}%
+{zgmbic8r,%
+unsetnum,%
+zgmbi-digits,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+\metrics \unsetglyph{Q},%
+newG8-BolIta-swq encoding T1,%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmj}{b}{scit}{}
+\installfont{T1-zgm-bi-osfI-sc-swq}%
+{zgmbic8r,%
+unsetnum,%
+zgmbi-digitsI,%
+\metrics \setkern{three}{j}{50} \setkern{four}{j}{60} \setkern{five}{j}{60},%
+\metrics \unsetglyph{Q},%
+newG8-BolIta-swq encoding T1,%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmj}{b}{scit}{}
+\installfont{T1-zgm-b-osf-swq}%
+{zgmb8r,%
+unsetnum,%
+zgmb-digits,%
+\metrics \unsetglyph{Q},%
+newG8-Bol-swq encoding T1,%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmj}{b}{n}{}
+\installfont{T1-zgm-b-osfI-swq}%
+{zgmb8r,%
+unsetnum,%
+zgmb-digitsI,%
+\metrics \unsetglyph{Q},%
+newG8-Bol-swq encoding T1,%
+adjust-gm-b,%
+newlatin}
+{t1}{T1}{zgmj}{b}{n}{}
+\installfont{T1-zgm-ri-osf-swq}%
+{zgmri8r,%
+unsetnum,%
+zgmri-digits,%
+\metrics \unsetglyph{Q},%
+newG8-Ita-swq encoding T1,%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmj}{m}{it}{}
+\installfont{T1-zgm-ri-osfI-swq}%
+{zgmri8r,%
+unsetnum,%
+zgmri-digitsI,%
+\metrics \unsetglyph{Q},%
+newG8-Ita-swq encoding T1,%
+adjust-gm-ri,%
+newlatin}
+{t1}{T1}{zgmj}{m}{it}{}
+\installfont{T1-zgm-bi-osf-swq}%
+{zgmbi8r,%
+unsetnum,%
+zgmbi-digits,%
+\metrics \unsetglyph{Q},%
+newG8-BolIta-swq encoding T1,%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmj}{b}{it}{}
+\installfont{T1-zgm-bi-osfI-swq}%
+{zgmbi8r,%
+unsetnum,%
+zgmbi-digitsI,%
+\metrics \unsetglyph{Q},%
+newG8-BolIta-swq encoding T1,%
+adjust-gm-bi,%
+newlatin}
+{t1}{T1}{zgmj}{b}{it}{}
+
+%%%%%%%%%%%% START TS1
+\installfamily{TS1}{zgmx}{}
+\installfont{TS1-zgm-r-lf}%
+{zgmr8r,%
+zgmr8c,% 8c is for ts1 (text companion) encoding
+zgmr-t8c,% 8c encoded zgmr-tc.pfb, from corrected rtcxr.pfb
+unsetnum,%
+zgmr-digits suffix oldstyle,%
+textcomp}
+{ts1}{TS1}{zgmx}{m}{n}{}
+\installfont{TS1-zgm-b-lf}%
+{zgmb8r,%
+zgmb8c,%
+zgmb-t8c,%
+unsetnum,%
+zgmb-digits suffix oldstyle,%
+textcomp}
+{ts1}{TS1}{zgmx}{b}{n}{}
+\installfont{TS1-zgm-ri-lf}%
+{zgmri8r,%
+zgmri8c,%
+zgmri-t8c,%
+unsetnum,%
+zgmri-digits suffix oldstyle,%
+textcomp}
+{ts1}{TS1}{zgmx}{m}{it}{}
+\installfont{TS1-zgm-bi-lf}%
+{zgmbi8r,%
+zgmbi8c,%
+zgmbi-t8c,%
+unsetnum,%
+zgmbi-digits suffix oldstyle,%
+textcomp}
+{ts1}{TS1}{zgmx}{b}{it}{}
+
+
+\endinstallfonts
+\bye

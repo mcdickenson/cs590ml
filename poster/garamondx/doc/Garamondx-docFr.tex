@@ -1,0 +1,271 @@
+%!TEX encoding =  UTF-8 Unicode
+%!TEX TS-program =  pdflatexmk
+
+% Garamondx Michael Sharpe le 18 novembre 2012
+%Traduction René Fritz le 4 décembre 2012
+
+\documentclass[12pt,english,french]{article}
+
+%Empagement courant (selon Hurtig : blancs tournants 2,1 2,625 3,15 3,675 en cm) : 
+\usepackage[a4paper,twoside,textwidth=15.75cm,textheight=23.4cm,heightrounded]{geometry} 
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[fleqn,tbtags]{mathtools}% Équivalent à \usepackage[fleqn,tbtags]{amsmath} \usepackage{mathtools} 
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{calc,ifthen,xspace}
+\usepackage{enumitem} 
+\usepackage{mflogo}
+\usepackage{verbatim}
+
+%XeLaTeX :
+\usepackage{metalogo}
+
+% Commandes :
+\newcommand{\mnu}[1]{\textsf{#1}}
+\newcommand{\cmd}[1]{\texttt{#1}}
+\newcommand{\To}{\,\(\to\)\,}
+
+% Ligatures :
+\newcommand\lig{\raisebox{-2.4pt}{\char21}}
+
+% Polices : 
+\usepackage[scaled,osfI]{garamondx}
+%\usepackage{garamondx}
+\usepackage{biolinum-type1}
+\usepackage[scaled=0.84]{beramono}
+%\usepackage[garamondx,cmbraces]{newtxmath}
+%\useosf
+
+
+% Babel :
+\usepackage{babel}
+\addto\captionsfrench{\def\tablename{\scshape Tableau}}
+\frenchbsetup{ShowOptions,og=«,fg=»}
+\usepackage{xfrac}
+\usepackage[decimalsymbol=comma,unitsep=cdot,digitsep=thick,mode=text,sepfour=true,valuesep=thick]{siunitx}
+\usepackage[np,autolanguage]{numprint}
+
+
+% Caption, float, microtype :
+%\usepackage{caption,float}
+\usepackage[textfont=it]{caption}
+\usepackage{floatrow}
+\floatsetup[table]{style=plaintop}
+\usepackage{subfig}
+\captionsetup[subfloat]{labelformat=simple,labelsep=period}
+\usepackage[final,babel]{microtype}
+%\usepackage[stretch=16,shrink=16,step=4,final]{microtype} plus tolérant des débordements
+%\usepackage[babel=true,kerning=true]{microtype} % supprime l'activation des ponctuations hautes !
+
+%HYPERREF :
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue]{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Extension garamondx\thanks{Traduit par René Fritz le 4 décembre 2012.}}
+\author{Michael Sharpe}
+\date{18 novembre 2012}
+\maketitle
+\thispagestyle{empty}
+
+\section{Introduction}
+
+
+Cette extension ajoute à \mnu{ugm} des fonctionnalités autrefois appelées \emph{expert}, d'où le x. Les polices \mnu{ugm}, (URW)++ GaramondNo$8$, ne sont pas libres au sens de la GNU, mais sont mis à disposition sous l'AFPL \emph{(Aladdin Free Public License)}, qui empêche leur diffusion au sein de \TeX Live. Elles peuvent être téléchargées à l'aide du script \mnu{getnonfreefonts} qui fait partie de \TeX Live. Les instructions d'installation sont disponibles sur,
+
+\noindent\url{http://tug.org/fonts/getnonfreefonts/}
+
+Les polices de cette extension dérivent en définitive des polices \mnu{ugm}, et sont donc également soumises à la même licence AFPL dont les détails précis sont énoncés sur,
+
+\noindent\url{http://www.artifex.com/downloads/doc/Public.htm}
+
+En termes généraux, la licence permet l'utilisation illimitée des polices par n'importe qui, mais ne permet pas un usage commercial pour leur distribution. Elle contraint également ceux qui modifient les polices à les délivrer sous la même licence, et les oblige à fournir des informations sur la nature des changements et leur identité.
+
+Dans les polices \mnu{ugm} du \textsc{ctan}, il manque :
+
+\begin{itemize}
+\item 
+un ensemble complet de ligatures pour le f (f\lig f, f\lig f\lig i et f\lig f\lig l sont manquantes) ;
+\item
+les petites capitales ;
+\item
+les chiffres elzéviriens.
+\end{itemize}
+
+Les glyphes eux-mêmes sont très proches de ceux de la distribution d'Adobe Stempel Garamond, qui a de nombreux admirateurs, mais ils n'ont pas, eux non plus, les ligatures du f. Le but ici est donc de créer une extension qui fournit ces fonctionnalités manquantes qui devraient, à mon avis, faire obligatoirement partie de toutes les extensions modernes de \LaTeX.
+
+Dans cette distribution, il manque dans le codage T\textlf{1} le glyphe \mnu{perthousandzero}, qui est rarement présent dans les polices PostScript, et n'est presque jamais nécessaire dans les extensions \LaTeX.
+
+\section{Un peu d'histoire}
+
+Contrairement à la plupart des autres polices dont le nom renferme le terme Garamond, les glyphes de cette police sont en fait des rendus numériques des polices effectivement conçues par Claude Garamond dans le milieu du \textsc{xvi}\up{e} siècle --- la plupart des autres polices Garamond sont plus proches de polices conçues par Jean Jannon quelques années plus tard. La société Stempel possédait le spécimen à partir duquel ils ont conçu les moulages métalliques des polices dans les années 20. Les premiers rendus numériques comprennent ceux de Bitstream sous le nom OriginalGaramond et ceux d'Adobe Stempel Garamond, sous licence de Linotype. (Il semble que bon nombre des lacunes des polices conçues par Linotype étaient des artefacts dus aux limites des machines pour lesquelles les polices ont été conçues et n'ont, dans la plupart des cas, pas été corrigées.)
+
+La dernière version (TrueType, non PostScript) officielle de (URW)++ GaramondNo8 est disponible sur,
+
+\noindent\url{http://ctan.org/tex-archive/support/ghostscript/AFPL/GhostPCL/urwfonts-8.71.tar.bz2}
+
+\noindent sa collection de glyphes est plus étendue que celles des versions PostScript. En particulier, les ligatures du f sont présentes, ainsi que les glyphes \mnu{Eng} et \mnu{eng} qui dans le codage T\textlf{1} sont obtenus respectivement par les commandes \verb+\NG+ et \verb+\ng+.
+
+À ma connaissance, il y a eu, assez récemment, deux tentatives pour retravailler ces polices. La première, sur laquelle ce travail est basé, est celle de Gael Varoquaux, disponible sur,
+
+\noindent\url{http://gael-varoquaux.info/computers/garamond/index.html}
+
+\noindent son extension \mnu{ggm}, n'étant pas distribuée sur le \textsc{ctan}, ne semble pas avoir été largement diffusée.
+
+La seconde est la distribution OpenType de Rogério Brito et Khaled Hosni disponible sur, 
+
+\noindent\url{https://github.com/rbrito/urw-garamond}
+
+Brito semble avoir fait un effort pour obtenir (URW)++ afin de délivrer les polices sous une licence moins restrictive, qui ne semble pas avoir porté ses fruits. Leur projet s'adressait principalement les utilisateurs de Lua\TeX{} et \XeLaTeX, et reste incomplet.
+
+De l'extension \mnu{ggm}, j'ai gardé (a) une base de départ pour améliorer les métriques ; (b) le glyphe Q ornementé, mais pas par défaut.
+
+\section{Nouveautés}
+
+Les éléments les plus importants sont : (i) les polices nouvellement conçues pour les petites capitales normal, italique, gras et gras italique ; (ii) les chiffres elzéviriens conçus pour chaque graisse ou et chaque style ; (iii) un ensemble complet de ligatures du f ; (iv) les macros pour personnaliser des chiffres ou le Q par défaut. Pour plus de détails sur les points (i) et (ii), voir la dernière section.
+
+\section{Options}
+
+Cette extension utilise le codage T\textlf{1} qu'elle intègre en interne : il n'est donc pas nécessaire de l'appeler séparément. De même, l'extension \cmd{textcomp} est chargée automatiquement, vous donnant accès à de nombreux symboles absents dans le codage T\textlf{1}.
+
+\begin{itemize}
+\item
+L'option \cmd{scaled} peut être utilisée pour mettre toutes les polices à l'échelle indiquée par le nombre spécifié. Par exemple, \cmd{scaled=.9} dimensionne toutes les polices à 90~\% de leur taille. Si vous entrez seulement l'option \cmd{scaled} sans valeur, la taille par défaut sera de \textlf{0.95}, ce qui est la bonne mesure pour amener la hauteur des capitales \emph{(Cap-height)} de GaramondNo8 à environ \textlf{0.665} \cmd{em} ; ce qui est normal  pour une police de texte, quoique inférieure à la hauteur d'x normale \emph{(x-height)} : ce qui est typique des polices Garamond.
+\item
+Par défaut, l'extension utilise les chiffres alignés \textlf{0123456789} plutôt que les chiffres elzéviriens 0123456789. L'option \cmd{osf} force le passage des chiffres au style ancien que je préfère, 0123456789, où le 1 ressemble au chiffre \textlf{1} aligné avec une hampe raccourcie, tandis que l'option \cmd{osfI} utilise les chiffres elzéviriens  traditionnels \textosfI{0123456789}, où le \textosfI{1} ressemble à la lettre \textosfI{I} avec une hampe raccourcie. Quelle que soit l'option utilisée,
+
+
+\begin{itemize}
+\item
+\verb+\textlf{1}+ produira le chiffre \textlf{1} aligné ; 
+\item
+\verb+\textosf{1}+ produira mon style ancien préféré \textosf{1} ;
+\item
+\verb+\textosfI{1}+ produira la style ancien traditionnel \textosfI{1}. 
+\end{itemize}
+
+\item
+Par défaut, la lettre Q est dans la version traditionnelle de GaramondNo8. Elle peut être remplacée partout par la version ornementée à l'aide de l'option, \cmd{swashQ} qui vous donnera, par exemple, \swashQ uoi !
+
+Que vous ayez préciser l'option \verb+\swashQ+ ou non, vous pouvez imprimer un Q ornementé dans la graisse  et la forme courante en écrivant \verb+\swashQ+. Par exemple,
+
+\verb+\swashQ uash+, produira \swashQ uash.
+\end{itemize}
+
+\subsection{Exemples}
+
+Voici les effets de quelques options :%\bigskip
+
+\begin{verbatim}
+\usepackage[scaled=.9,osf]{garamondx}% taille à 90 % avec mon style ancien 
+\usepackage[scaled,osf]{garamondx}% taille à 95 %, avec mon style ancien 
+\usepackage[osfI]{garamondx}% style traditionnel 
+\usepackage[osfI,swashQ]{garamondx}% style traditionnel & les Q ornementés
+\end{verbatim}
+
+\section{Chiffres supérieurs}
+
+Les versions TrueType de GaramondNo8 ont un ensemble complet des chiffres supérieurs, contrairement à leurs homologues PostScript. Seuls les glyphes des chiffres supérieurs de graisse ordinaire ont été copiés dans \mnu{NewG8-sups.pfb} et \mnu{NewG8-sups.afm} et introduits par un \mnu{tfm} nommé \mnu{NewG8-sups.tfm} qui peut être utilisé par l'extension \mnu{superiors} pour rendre les marqueurs de notes de bas de page ajustables. Consultez le \mnu{superiors-doc.pdf} (vous pouvez le trouver dans \TeX Live en tapant \cmd{texdoc supériors} dans la fenêtre du Terminal.) L'appel le plus simple est :
+
+\begin{verbatim}
+\usepackage[supstfm=NewG8-sups]{superios}
+\end{verbatim}
+
+\section{Détails de mise en œuvre}
+
+\subsection{Petites capitales}
+
+Les polices des petites capitales ont été créés à partir des capitales en utilisant FontForge pour les dimensionner de manière uniforme à 67~\%, puis épaissir les pleins horizontaux et verticaux à 130~\%. Les résultats ont servi d'ébauche pour les réglages individuels de chaque glyphe. Avec FontForge, les pleins ont été corrigés de façon appropriée, nécessitant souvent un remaniement de la forme. Les résultats finaux sont la seule description possible de ces transformations. Enfin, les métriques appropriées ont été créées à l'aide FontForge, donnant résultats finaux. La forme verticale en graisse normale, a été retravaillé beaucoup plus que les autres graisses, et semble meilleure, à mon avis. Créer des petites capitales à partir de zéro exige un véritable effort pour obtenir les glyphes, les métriques et le bon crénage. Dans les deux formes droites normales et grasses, les glyphes standard accentués sont fournis, ainsi que des caractères spéciaux et des ligatures a\lig e et o\lig e et les glyphes \mnu{lslash} et \mnu{oslash}.
+
+Les macros de petites capitales \verb+\textsc+ coopèrent avec \verb+\textbf+ et \verb+\textit+, de sorte que vous pouvez utiliser, par exemple :
+
+\begin{verbatim}
+\textsc{Capitales et Petites Capitales}
+\end{verbatim}
+pour produire \textsc{Capitales et Petites Capitales},
+
+\begin{verbatim}
+\textit{\textsc{Capitales et Petites Capitales}}
+\end{verbatim}
+pour produire \textit{\textsc{Capitales et Petites Capitales}},
+
+\begin{verbatim}
+\textbf{\textsc{Capitales et Petites Capitales}}
+\end{verbatim}
+pour produire \textbf{\textsc{Capitales et Petites Capitales}}, et
+
+\begin{verbatim}
+\textbf{\textit{\textsc{Capitales et Petites Capitales}}}
+\end{verbatim}
+pour produire \textbf{\textit{\textsc{Capitales et Petites Capitales}}}.
+
+\subsection{Chiffres elzéviriens}
+
+Les chiffres elzéviriens elzéviriens ont été créés à partir des chiffres alignés existants, en réduisant les pleins du 0 et du 1 à une taille minuscule avec FontForge, et en abaissant les positions verticales des autres. Les formes ont ensuite été modifiées avec FontForge pour obtenir l'aspect plus traditionnel du style ancien. les résultats finaux montrent les transformations impliquées.
+
+\section{Accord avec une extension math}
+
+L'extension \mnu{mathdesign} de Paul Pichaureau possède l'option \cmd{ugm} qui met le texte en \mnu{ugm} avec son extension math assortie. Pour utiliser cette extension math avec \mnu{garamondx} tapez :
+
+\begin{verbatim}
+\usepackage[ugm]{mathdesign}
+\usepackage{garamondx}
+\end{verbatim}
+
+Une autre possibilité est d'utiliser l'option \cmd{garamondx} de \mnu{newtxmath}, qui utilise les italiques garamondx capitales et minuscules, parfaitement adaptées aux maths, à la place des italiques Times utilisées par défaut. Cela nécessite la version 1.06 ou postérieure de l'extension \mnu{newtxmath}.
+
+\begin{verbatim}
+\usepackage{garamondx} % avec les chiffres alignés bons pour les maths
+\usepackage[scaled=.84]{beramono} % bonne police machine à écrire
+\usepackage{biolinum-type1} % une sans-serif
+\usepackage[garamondx,cmbraces]{newtxmath}
+\useosf % style des chiffres en osf pour le texte et non pour les maths
+\end{verbatim}
+
+\noindent\textsc{Remarque}. -- La dernière commande, ainsi que son homologue \verb+\useosfI+, ne peuvent être utilisées que dans le préambule, et ne doivent jamais précéder \verb+\usepackage{garamondx}+.
+
+\section{Lisence}
+
+Les polices de cette extension sont dérivées des polices (URW) + + GaramondNo8 qui ont été délivrées sous l'AFPL ;  il en est donc de même pour ces polices. Les autres fichiers de support sont soumis à la \emph{\LaTeX{} Project Public License} ; voir sur le site,
+
+\noindent\url{http://www.ctan.org/tex-archive/help/Catalogue/licenses.lppl.html}
+
+\noindent pour les détails de cette licence.
+
+Les modifications de cette extension et des polices décrites ci-dessus sont protégées par Copyright, Michael Sharpe, \href{mailto:msharpe@ucsd.edu}{msharpe@ucsd.edu}, le 3 octobre 2012.\enlargethispage*{\baselineskip}
+
+\subsection{Fichiers couverts par l'AFPL}
+
+\begin{verbatim}
+NewG8-Bol.afm
+NewG8-Bol.pfb
+NewG8-Bol-SC.afm
+NewG8-Bol-SC.pfb
+NewG8-BolIta.afm
+NewG8-BolIta.pfb
+NewG8-BolIta-SC.afm
+NewG8-BolIta-SC.pfb
+NewG8-Ita-SC.afm
+NewG8-Ita-SC.pfb
+NewG8-Ita.afm
+NewG8-Ita.pfb
+newG8-Osf-bol.afm
+newG8-Osf-bol.pfb
+newG8-Osf-bolita.afm
+newG8-Osf-bolita.pfb
+newG8-Osf-ita.afm
+newG8-Osf-ita.pfb
+newG8-Osf-reg.afm
+newG8-Osf-reg.pfb
+NewG8-Reg-SC.afm
+NewG8-Reg-SC.pfb
+NewG8-Reg.afm
+NewG8-Reg.pfb
+NewG8-sups.afm
+NewG8-sups.pfb
+\end{verbatim}
+
+\end{document}
+
+

@@ -1,0 +1,27 @@
+NewG8-Ita-alt-raw NewG8-Ita " NewG8AltEncoding ReEncodeFont " <[newg8alt.enc <NewG8-Ita.pfb
+NewG8-BolIta-alt-raw NewG8-BolIta " NewG8AltEncoding ReEncodeFont " <[newg8alt.enc <NewG8-BolIta.pfb
+zgmr8r NewG8-Reg " TeXBase1Encoding ReEncodeFont " <[8r.enc <NewG8-Reg.pfb 
+zgmrc8r NewG8-Reg-SC " TeXBase1Encoding ReEncodeFont " <[8r.enc <NewG8-Reg-SC.pfb
+zgmb8r NewG8-Bol " TeXBase1Encoding ReEncodeFont " <[8r.enc <NewG8-Bol.pfb
+zgmbc8r NewG8-Bol-SC " TeXBase1Encoding ReEncodeFont " <[8r.enc <NewG8-Bol-SC.pfb
+zgmri8r NewG8-Ita " TeXBase1Encoding ReEncodeFont " <[8r.enc <NewG8-Ita.pfb
+zgmric8r NewG8-Ita-SC " TeXBase1Encoding ReEncodeFont " <[8r.enc <NewG8-Ita-SC.pfb
+zgmbic8r NewG8-BolIta-SC " TeXBase1Encoding ReEncodeFont " <[8r.enc <NewG8-BolIta-SC.pfb
+zgmbi8r NewG8-BolIta " TeXBase1Encoding ReEncodeFont " <[8r.enc <NewG8-BolIta.pfb
+zgmr-digits newG8-Osf-reg  " TeXBase1Encoding ReEncodeFont "<[8r.enc <newG8-Osf-reg.pfb
+zgmb-digits newG8-Osf-bol  " TeXBase1Encoding ReEncodeFont "<[8r.enc <newG8-Osf-bol.pfb
+zgmri-digits newG8-Osf-ita  " TeXBase1Encoding ReEncodeFont "<[8r.enc <newG8-Osf-ita.pfb
+zgmbi-digits newG8-Osf-bolita " TeXBase1Encoding ReEncodeFont " <[8r.enc <newG8-Osf-bolita.pfb
+newG8-Reg-swq NewG8-Reg " swashQEncoding ReEncodeFont " <[swashQ.enc <NewG8-Reg.pfb
+newG8-Ita-swq NewG8-Ita " swashQEncoding ReEncodeFont " <[swashQ.enc <NewG8-Ita.pfb
+newG8-Bol-swq NewG8-Bol " swashQEncoding ReEncodeFont " <[swashQ.enc <NewG8-Bol.pfb
+newG8-BolIta-swq NewG8-BolIta " swashQEncoding ReEncodeFont " <[swashQ.enc <NewG8-BolIta.pfb
+NewG8-sups NewG8-sups <NewG8-sups.pfb
+zgmr8c NewG8-Reg " zgmTS1Encoding ReEncodeFont " <[zgm_ts1.enc <NewG8-Reg.pfb
+zgmri8c NewG8-Ita " zgmTS1Encoding ReEncodeFont " <[zgm_ts1.enc <NewG8-Ita.pfb
+zgmb8c NewG8-Bol " zgmTS1Encoding ReEncodeFont " <[zgm_ts1.enc <NewG8-Bol.pfb
+zgmbi8c NewG8-BolIta " zgmTS1Encoding ReEncodeFont " <[zgm_ts1.enc <NewG8-BolIta.pfb
+zgmri-t8c zgmri-tc " zgmTS1Encoding ReEncodeFont " <[zgm_ts1.enc <zgmri-tc.pfb
+zgmr-t8c zgmr-tc " zgmTS1Encoding ReEncodeFont " <[zgm_ts1.enc <zgmr-tc.pfb
+zgmbi-t8c zgmbi-tc " zgmTS1Encoding ReEncodeFont " <[zgm_ts1.enc <zgmbi-tc.pfb
+zgmb-t8c zgmb-tc " zgmTS1Encoding ReEncodeFont " <[zgm_ts1.enc <zgmb-tc.pfb

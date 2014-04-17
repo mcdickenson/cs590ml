@@ -1,0 +1,331 @@
+% !TEX TS-program = pdflatexmk
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage[parfill]{parskip}% Begin paragraphs with an empty line rather than an indent
+%SetFonts
+% zgm
+\usepackage[full]{textcomp}
+\usepackage[osf]{garamondx}
+\usepackage[sf,type1]{libertine}%biolinum-type1
+\usepackage[varqu,varl]{zi4} 
+%SetFonts
+\usepackage{fonttable} 
+\usepackage{url}
+\usepackage{hyperref}
+\title{The \texttt{garamondx} package}
+\author{Michael Sharpe}
+\date{\today}  % Activate to display a given date or no date
+\font\sq=T1-zgm-r-lf-swq at 11pt
+\begin{document}
+\maketitle
+\section{Overview}
+This package provides an extension of the \texttt{ugm} package, adding features that were once referred to as \emph{expert}, whence the \texttt{x}. The \texttt{ugm} fonts, (URW)++ GaramondNo8, are not free in the sense of GNU but are made available under the AFPL (Aladdin Free Public License), which is restrictive enough to prevent their distribution as part of \TeX Live. They may be downloaded  using the \texttt{getnonfreefonts} script that used to be part of \TeX Live. Instructions for installation are laid out at\\
+\url{http://tug.org/fonts/getnonfreefonts/}\\
+The fonts in this package are derived ultimately from the \texttt{ugm} fonts, and so are also subject to the same AFPL license, the precise details of which are spelled out at
+
+\url{http://www.artifex.com/downloads/doc/Public.htm}
+
+In broad terms, the license allows unlimited use of the fonts by anyone, but does not not permit any fee for their distribution. It also restricts those who modify the fonts to release them under the same license, and requires them to provide information about the changes and the identity of the modifier.
+
+The \texttt{ugm} fonts on \textsc{ctan} lack:
+\begin{itemize}
+\item
+a full set of f-ligatures (\verb|f_f|, \verb|f_f_i| and \verb|f_f_l| are missing);
+\item small caps;
+\item old style figures.
+\end{itemize} 
+The glyphs themselves are very close to those in Adobe's Stempel Garamond font package, which has many admirers, though they also lack the same f-ligatures. So, the goal here is to make a package which provides these missing features which should, in my opinion, be an essential part of any modern \LaTeX\ font package.
+
+The only glyph missing from the T\textlf{1} encoding in this distribution is \texttt{perthousandzero}, which is only rarely present in PostScript fonts, and is almost never required as part of \LaTeX\ packages.
+
+The latest version contains a full rendition of the TS\textlf{1} encoding is all styles. By default, the \verb|textcomp| package is required by {\tt garamondx.sty}, but the default version lacks a couple of features. To be able to make use of all TS\textlf{1} features, load the packages thus:
+\begin{verbatim}
+\usepackage[full]{textcomp}
+\usepackage{garamondx}
+\end{verbatim}
+
+\section{Some History}
+Unlike most other fonts having Garamond as part of the name, the glyphs in this font are in fact digital renderings of fonts actually designed by Claude Garamond in the mid sixteenth century --- most other Garamond fonts are closer to fonts designed by Jean Jannon some years later. The Stempel company owned the specimen from which they designed metal castings of the fonts in the 1920's. Early digital renderings include those by Bitstream under the name OriginalGaramond, and Stempel Garamond from Adobe,  licensed from LinoType. (It appears that many of the deficiencies of fonts designed by LinoType were artifacts of the limitations of the machines for which the fonts were designed, and have in most cases not been corrected.) 
+
+The latest version (TrueType, not PostScript) of the official (URW)++ GaramondNo8 is available from
+
+\url{http://ctan.org/tex-archive/support/ghostscript/AFPL/GhostPCL/urwfonts-8.71.tar.bz2}
+
+which has a more extensive collection of glyphs than the PostScript versions. In particular, the f-ligatures are there, as well as the glyphs \texttt{Eng}, \texttt{eng} that are part of the T\textlf{1} encoding under the names \texttt{Ng}, \texttt{ng}.
+
+To my knowledge, there have been two fairly recent attempts to rework these fonts. The first, upon which this work is based, was by Gael Varoquaux, available at
+
+\url{http://gael-varoquaux.info/computers/garamond/index.html}
+
+His \texttt{ggm} package seems never to have been widely distributed, not having appeared on \textsc{ctan}. 
+
+The second was an OpenType package by Rog\'erio Brito and Khaled Hosny at
+
+\url{https://github.com/rbrito/urw-garamond}
+
+Brito seems to have made an effort to get (URW)++ to release the fonts under a less restrictive license, which  does not appear to have been successful.
+Their project was aimed mainly towards users of LuaTeX and XeTeX, and remains incomplete.
+
+What I kept from the \texttt{ggm} package was (a) a starting point for improved metrics; (b) the swash Q glyph, though not as the default Q. 
+\section{New in this package}
+The most important items are (i) newly designed Small Cap fonts for Regular, Italic, Bold and Bold Italic; (ii) newly designed old style figures for each weight/style; (iii) a full set of f-ligatures; (iv) macros to allow customizations of the default figures and the default Q; (v) a full text companion font in each weight/style. For details of (i) and (ii), see the last section.
+\section{Package Options}
+The package uses T\textlf{1} encoding---this is built into the package and need not be specified separately. Likewise, the \texttt{textcomp} package is loaded automatically, giving you access to many symbols not included in the T\textlf{1} encoding. (It is better though to load {\tt textcomp} with option {\tt full} before loading {\tt garamondx}.)
+\begin{itemize}
+\item
+The option \texttt{scaled} may be used to scale all fonts by the specified number. Eg, \texttt{scaled=.9} scales all fonts to 90\% of natural size. If you provide just the option \texttt{scaled} without a value, the default is \textlf{0.95}, which is about the correct scaling to bring the Cap-height of GaramondNo8 down to \textlf{.665}\texttt{em}, about normal for a text font, but with a  smaller than normal  x-height that is typical of Garamond fonts.
+\item
+By default, the package uses lining figures {\usefont{T1}{zgmx}{m}{n} 0123456789} rather than oldstyle figures 0123456789. The option \texttt{osf} forces the figure style to a modified oldstyle that I prefer, \oldstylenums{0123456789}, where the \oldstylenums{1} looks like a lining figure {\usefont{T1}{zgmx}{m}{n} 1} with a shortened stem, while the option \texttt{osfI} uses the more traditional oldstyle figures \textosfI{0123456789}, where the 1 looks like the letter I with a shortened stem. No matter which option you use:
+\begin{itemize}
+\item
+\verb|\textlf{1}| produces the lining figure \textlf{1};
+\item \verb|\textosf{1}| produces my preferred oldstyle \textosf{1};
+\item \verb|\textosfI{1}| produces the traditional oldstyle \textosfI{1}.
+\end{itemize}
+\item The default version of the letter Q is the traditional one from GaramondNo8. It may be replaced everywhere by the swash version via the option \texttt{swashQ}, which gives you, eg, 
+{\sq Q}uoi?
+
+Whether or not you have specified the option \texttt{swashQ}, you may print a swash Q in the current weight and shape by writing \verb|\swashQ| --- eg, 
+\begin{verbatim}
+\swashQ uash.
+\end{verbatim}
+produces \swashQ uash.
+\end{itemize}
+
+\subsection{Examples} The following show the effects of some options:
+
+\begin{verbatim}
+\usepackage[scaled=.9,osf]{garamondx}% scaled to 90%, my oldstyle
+\usepackage[scaled,osf]{garamondx}% scaled to 95%, my oldstyle
+\usepackage[osfI]{garamondx}% traditional oldstyle
+\usepackage[osfI,swashQ]{garamondx}% traditional oldstyle, all Q rendered as swash Q
+\end{verbatim}
+\section{Text effects under \texttt{fontaxes}}
+This package loads the {\tt fontaxes} package in order to access italic small caps. You should pay attention to the fact that {\tt fontaxes} modifies the behavior of some basic \LaTeX\ text macros such as \verb|\textsc| and \verb|\textup|. Under normal \LaTeX, some text effects are combined, so that, for example, \verb|\textbf{\textit{a}}| produces bold italic {\tt a}, while other effects are not, eg, \verb|\textsc{\textup{a}}| has the same effect as \verb|\textup{a}|, producing the letter {\tt a} in upright, not small cap, style. With {\tt fontaxes}, \verb|\textsc{\textup{a}}| produces instead upright small cap {\tt a}. It offers a macro \verb|\textulc| that undoes small caps, so that, eg, \verb|\textsc{\textulc{a}}| produces {\tt a} in non-small cap mode, with whatever other style choices were in force, such as bold or italics.
+
+\section{Superior figures}
+The TrueType versions of GaramondNo8 have a full set of superior figures, unlike their PostScript counterparts. The superior figure glyphs in regular weight only have been copied to \texttt{NewG8-sups.pfb} and \texttt{NewG8-sups.afm} and provided with a tfm named \texttt{NewG8-sups.tfm} that can be used by the \textsf{superiors} package to provide adjustable footnote markers. See \textsf{superiors-doc.pdf} (you can find it in \TeX Live by typing \texttt{texdoc superiors} in a Terminal window.) The simplest invocation is
+\begin{verbatim}
+\usepackage[supstfm=NewG8-sups]{superiors}
+\end{verbatim}
+\section{Glyphs in TS\textlf{1} encoding}
+The layout of the TS\textlf{1} encoded Text Companion font, which is fully rendered in this package, is as follows. See below for the macros that invoke these glyphs. Though shown in regular weight, upright shape only, the glyphs are available in all weights and shapes.
+
+\fonttable{TS1-zgm-r-lf}
+
+\textsc{List of macros to access the TS\textlf{1} symbols in text mode:}\\
+(Note that slots 0--12 and 26--29 are accents, used like \verb|\t{a}| for a tie accent over the letter a. Slots 23 and 31 do not contain visible glyphs, but have heights indicated by their names.)
+\begin{verbatim}
+  0 \capitalgrave
+  1 \capitalacute
+  2 \capitalcircumflex
+  3 \capitaltilde
+  4 \capitaldieresis
+  5 \capitalhungarumlaut
+  6 \capitalring
+  7 \capitalcaron
+  8 \capitalbreve
+  9 \capitalmacron
+ 10 \capitaldotaccent
+ 11 \capitalcedilla
+ 12 \capitalogonek
+ 13 \textquotestraightbase
+ 18 \textquotestraightdblbase
+ 21 \texttwelveudash
+ 22 \textthreequartersemdash
+ 23 \textcapitalcompwordmark
+ 24 \textleftarrow
+ 25 \textrightarrow
+ 26 \t % tie accent, skewed right
+ 27 \capitaltie % skewed right
+ 28 \newtie % tie accent centered
+ 29 \capitalnewtie % ditto
+ 31 \textascendercompwordmark
+ 32 \textblank
+ 36 \textdollar
+ 39 \textquotesingle
+ 42 \textasteriskcentered
+ 45 \textdblhyphen
+ 47 \textfractionsolidus
+ 48 \textzerooldstyle
+ 49 \textoneoldstyle
+ 50 \texttwooldstyle
+ 49 \textthreeoldstyle
+ 50 \textfouroldstyle
+ 51 \textfiveoldstyle
+ 52 \textsixoldstyle
+ 53 \textsevenoldstyle
+ 54 \texteightoldstyle
+ 55 \textnineoldstyle
+ 60 \textlangle
+ 61 \textminus
+ 62 \textrangle
+ 77 \textmho
+ 79 \textbigcircle
+ 87 \textohm
+ 91 \textlbrackdbl
+ 93 \textrbrackdbl
+ 94 \textuparrow
+ 95 \textdownarrow
+ 96 \textasciigrave
+ 98 \textborn
+ 99 \textdivorced
+100 \textdied
+108 \textleaf
+109 \textmarried
+110 \textmusicalnote
+126 \texttildelow
+127 \textdblhyphenchar
+128 \textasciibreve
+129 \textasciicaron
+130 \textacutedbl
+131 \textgravedbl
+132 \textdagger
+133 \textdaggerdbl
+134 \textbardbl
+135 \textperthousand
+136 \textbullet
+137 \textcelsius
+138 \textdollaroldstyle
+139 \textcentoldstyle
+140 \textflorin
+141 \textcolonmonetary
+142 \textwon
+143 \textnaira
+144 \textguarani
+145 \textpeso
+146 \textlira
+147 \textrecipe
+148 \textinterrobang
+149 \textinterrobangdown
+150 \textdong
+151 \texttrademark
+152 \textpertenthousand
+153 \textpilcrow
+154 \textbaht
+155 \textnumero
+156 \textdiscount
+157 \textestimated
+158 \textopenbullet
+159 \textservicemark
+160 \textlquill
+161 \textrquill
+162 \textcent
+163 \textsterling
+164 \textcurrency
+165 \textyen
+166 \textbrokenbar
+167 \textsection
+168 \textasciidieresis
+169 \textcopyright
+170 \textordfeminine
+171 \textcopyleft
+172 \textlnot
+173 \textcircledP
+174 \textregistered
+175 \textasciimacron
+176 \textdegree
+177 \textpm
+178 \texttwosuperior
+179 \textthreesuperior
+180 \textasciiacute
+181 \textmu
+182 \textparagraph
+183 \textperiodcentered
+184 \textreferencemark
+185 \textonesuperior
+186 \textordmasculine
+187 \textsurd
+188 \textonequarter
+189 \textonehalf
+190 \textthreequarters
+191 \texteuro
+214 \texttimes
+246 \textdiv
+\end{verbatim}
+There is a macro \verb|\textcircled| that may be used to construct a circled version of a single letter using \verb|\textbigcircle|. The letter is always constructed from the small cap version, so, in effect, you can only construct circled uppercase letters: \verb|\textcircled{M}| and \verb|\textcircled{m}| have the same effect, namely \textcircled{M}.
+\section{Implementation details}
+\subsection{Small Cap fonts}
+The small cap fonts were created from the capitals A--Z using FontForge to scale the sizes down uniformly to 67\%, then boosting the horizontal and vertical stems up by 130\%. The results provided a rough basis for the individual adjustments that had to be made to each glyph. Using FontForge, the stems were resized appropriately, often requiring a reworking of the shape. The end results are the only possible description of those transformations. Following the creation of those glyphs,  appropriate metrics were created using FontForge, the end results of which are provided. 
+The regular weight, upright shape, has been reworked much more than other weights, and looks considerably better, in my opinion. Making a small cap font from scratch takes some real work to get the glyphs, the metrics and the kerning right. In both the regular and bold upright shapes, standard accented glyphs are provided, as well as some special characters and \verb|a_e| and \verb|o_e| ligatures and the glyphs \texttt{lslash} and \texttt{oslash}.
+
+The small cap macro \verb|\textsc| cooperates with \verb|\textbf| and \verb|\textit|, so you may use, for example:
+\begin{verbatim}
+\textsc{Caps and Small Caps}
+\end{verbatim}
+to produce \textsc{Caps and Small Caps},
+\begin{verbatim}
+\textit{\textsc{Caps and Small Caps}}
+\end{verbatim}
+to produce \textit{\textsc{Caps and Small Caps}},
+\begin{verbatim}
+\textbf{\textsc{Caps and Small Caps}}
+\end{verbatim}
+to produce \textbf{\textsc{Caps and Small Caps}}, and
+\begin{verbatim}
+\textbf{\textit{\textsc{Caps and Small Caps}}}
+\end{verbatim}
+to produce \textbf{\textit{\textsc{Caps and Small Caps}}}.
+
+\subsection{Old style figures}
+The old style figures were created based on the existing lining figures, reducing the stem lengths of \textlf{0} and \textlf{1} to lower-case size using FontForge, and lowering the vertical positions of others. The shapes were then modified in FontForge to have more of a traditional oldstyle appearance --- the end results  show the transformations involved.
+
+\subsection{Text Companion glyphs} To provide full versions of the TS\textlf{1} glyphs, a number of glyphs (tie accents, born, died, married, divorced, referencemark, numero, discount, estimated, copyleft, centoldstyle) were adapted from Computer Modern, though with weights appropriate to {\tt garamondx}. The other glyphs were copied virtually from a small modification of glyphs from {\tt txfonts}, which has an essentially full rendition of the Text Companion glyphs in all weights/styles.
+\section{Matching math packages}
+Paul Pichaureau's \textsf{mathdesign} package has an option \texttt{garamond} that sets text to \texttt{ugm} and math to his package that matches \texttt{ugm}. To use his math package with \texttt{garamondx} you write
+\begin{verbatim}
+\usepackage[full]{textcomp}
+\usepackage[garamond]{mathdesign}
+\usepackage{garamondx}
+\end{verbatim}
+Another possibility is to use the \texttt{garamondx} option to \texttt{newtxmath}, which uses \texttt{garamondx} upper and lower cases italic letters, properly metrized for math, in place of the default Times italics. This requires version \textlf{1.06} or higher of the \texttt{newtxmath} package. 
+\begin{verbatim}
+\usepackage[full]{textcomp}
+\usepackage{garamondx} % defaults to lining figures, good for math
+\usepackage[varqu,varl]{zi4}% typewriter font inconsolata
+\usepackage[sf]{libertine}%biolinum as sans-serif
+\usepackage[garamondx,cmbraces]{newtxmath}
+\useosf % changes figure style in garamondx to osf for text, not math
+\end{verbatim}
+Note that the last command, as well as its companion \verb|\useosfI|, may only be used in the preamble, and must not precede \verb|\usepackage{garamondx}|.
+
+\section{License}
+The fonts in this package are derived from the (URW)++ GaramondNo8 fonts which were released under the AFPL, and so the same holds for these fonts. The other support files are subject to the LaTeX Project Public License. See\\
+ \url{http://www.ctan.org/tex-archive/help/Catalogue/licenses.lppl.html}\\
+  for the details of that license.
+
+The package and font modifications described above are Copyright Michael Sharpe, msharpe@ucsd.edu, October 1, 2013.
+
+\subsection{Font files covered by the AFPL}
+\begin{verbatim}
+NewG8-Bol.afm
+NewG8-Bol.pfb
+NewG8-Bol-SC.afm
+NewG8-Bol-SC.pfb
+NewG8-BolIta.afm
+NewG8-BolIta.pfb
+NewG8-BolIta-SC.afm
+NewG8-BolIta-SC.pfb
+NewG8-Ita-SC.afm
+NewG8-Ita-SC.pfb
+NewG8-Ita.afm
+NewG8-Ita.pfb
+newG8-Osf-bol.afm
+newG8-Osf-bol.pfb
+newG8-Osf-bolita.afm
+newG8-Osf-bolita.pfb
+newG8-Osf-ita.afm
+newG8-Osf-ita.pfb
+newG8-Osf-reg.afm
+newG8-Osf-reg.pfb
+NewG8-Reg-SC.afm
+NewG8-Reg-SC.pfb
+NewG8-Reg.afm
+NewG8-Reg.pfb
+NewG8-sups.afm
+NewG8-sups.pfb
+\end{verbatim}
+
+
+
+\end{document}  

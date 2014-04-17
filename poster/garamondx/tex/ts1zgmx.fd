@@ -1,0 +1,40 @@
+%Filename: ts1zgmx.fd
+%Created by: tex zgm-drv
+%Created using fontinst v1.933
+
+%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY
+
+\ProvidesFile{ts1zgmx.fd}
+   [2012/11/16 Fontinst v1.933 font definitions for TS1/zgmx.]
+
+\expandafter\ifx\csname zgm@Scale\endcsname\relax
+ \let\zgm@@Scale\@empty
+\else
+ \edef\zgm@@Scale{s*[\csname zgm@Scale\endcsname]}%
+\fi
+
+\DeclareFontFamily{TS1}{zgmx}{}
+
+\DeclareFontShape{TS1}{zgmx}{m}{n}{
+   <->  \zgm@@Scale TS1-zgm-r-lf
+}{}
+
+\DeclareFontShape{TS1}{zgmx}{b}{n}{
+   <-> \zgm@@Scale  TS1-zgm-b-lf
+}{}
+
+\DeclareFontShape{TS1}{zgmx}{m}{it}{
+   <-> \zgm@@Scale  TS1-zgm-ri-lf
+}{}
+
+\DeclareFontShape{TS1}{zgmx}{b}{it}{
+   <-> \zgm@@Scale  TS1-zgm-bi-lf
+}{}
+
+\DeclareFontShape{TS1}{zgmx}{bx}{n}{<->ssub * zgmx/b/n}{}
+\DeclareFontShape{TS1}{zgmx}{m}{sl}{<->ssub * zgmx/m/it}{}
+\DeclareFontShape{TS1}{zgmx}{bx}{it}{<->ssub * zgmx/b/it}{}
+\DeclareFontShape{TS1}{zgmx}{b}{sl}{<->ssub * zgmx/b/it}{}
+\DeclareFontShape{TS1}{zgmx}{bx}{sl}{<->ssub * zgmx/b/sl}{}
+
+\endinput

@@ -1,0 +1,23 @@
+%Filename: newG8-Bol-swq-T1.mtx
+%Created by: tex zgm-drv
+%Created using: \generalpltomtx{newG8-Bol-swq}{newG8-Bol-swq-T1}{pl}{T1}
+
+%This file contains the information of newG8-Bol-swq.pl in a form
+%more easily read by TeX. It is used by the fontinst package.
+
+%THIS FILE CAN BE DELETED.
+
+\relax
+\metrics
+
+\needsfontinstversion{1.933}
+
+\storemapdata{newG8-Bol-swq-T1}{\frompl{newG8-Bol-swq}}{}
+
+\setdim{designsize}{10.0pt}
+\setdim{designunits}{1.0pt}
+\setrawglyph{Q}{newG8-Bol-swq}{10.0pt}{81}{867}{714}{344}{0}
+\setrawglyph{Ng}{newG8-Bol-swq}{10.0pt}{141}{836}{721}{234}{0}
+\setrawglyph{ng}{newG8-Bol-swq}{10.0pt}{173}{582}{460}{264}{0}
+
+\endmetrics

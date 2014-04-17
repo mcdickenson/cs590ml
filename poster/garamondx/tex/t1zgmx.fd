@@ -1,0 +1,66 @@
+%Filename: t1zgmx.fd
+%Created by: tex zgm-drv
+%Created using fontinst v1.933
+
+%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY
+
+\ProvidesFile{t1zgmx.fd}
+   [2012/10/29 Fontinst v1.933 font definitions for T1/zgmx.]
+
+\expandafter\ifx\csname zgm@Scale\endcsname\relax
+ \let\zgm@@Scale\@empty
+\else
+ \edef\zgm@@Scale{s*[\csname zgm@Scale\endcsname]}%
+\fi
+
+\def\zgm@tmp{\ifzgm@swq \def\zgm@@swq{-swq}\fi}
+\let\zgm@@swq\@empty
+\ifdefined\zgm@swqtrue
+  \zgm@tmp
+\fi
+
+
+\DeclareFontFamily{T1}{zgmx}{}
+
+\DeclareFontShape{T1}{zgmx}{m}{n}{
+   <-> \zgm@@Scale  T1-zgm-r-lf\zgm@@swq
+}{}
+
+\DeclareFontShape{T1}{zgmx}{m}{sc}{
+   <-> \zgm@@Scale  T1-zgm-r-lf-sc\zgm@@swq
+}{}
+
+\DeclareFontShape{T1}{zgmx}{b}{sc}{
+   <-> \zgm@@Scale  T1-zgm-b-lf-sc\zgm@@swq
+}{}
+
+\DeclareFontShape{T1}{zgmx}{m}{scit}{
+   <-> \zgm@@Scale  T1-zgm-ri-lf-sc\zgm@@swq
+}{}
+
+\DeclareFontShape{T1}{zgmx}{b}{scit}{
+   <-> \zgm@@Scale  T1-zgm-bi-lf-sc\zgm@@swq
+}{}
+
+\DeclareFontShape{T1}{zgmx}{b}{n}{
+   <-> \zgm@@Scale  T1-zgm-b-lf\zgm@@swq
+}{}
+
+\DeclareFontShape{T1}{zgmx}{m}{it}{
+   <-> \zgm@@Scale  T1-zgm-ri-lf\zgm@@swq
+}{}
+
+\DeclareFontShape{T1}{zgmx}{b}{it}{
+   <-> \zgm@@Scale  T1-zgm-bi-lf\zgm@@swq
+}{}
+
+\DeclareFontShape{T1}{zgmx}{bx}{sc}{<->ssub * zgmx/b/sc}{}
+\DeclareFontShape{T1}{zgmx}{bx}{scit}{<->ssub * zgmx/b/scit}{}
+\DeclareFontShape{T1}{zgmx}{bx}{n}{<->ssub * zgmx/b/n}{}
+\DeclareFontShape{T1}{zgmx}{m}{sl}{<->ssub * zgmx/m/it}{}
+\DeclareFontShape{T1}{zgmx}{bx}{it}{<->ssub * zgmx/b/it}{}
+\DeclareFontShape{T1}{zgmx}{b}{sl}{<->ssub * zgmx/b/it}{}
+\DeclareFontShape{T1}{zgmx}{bx}{sl}{<->ssub * zgmx/b/sl}{}
+\DeclareFontShape{T1}{zgmx}{m}{fscn}{<->ssub * zgmx/m/sc}{} % needed with mathdesign[ugm]
+\DeclareFontShape{T1}{zgmx}{b}{fscn}{<->ssub * zgmx/b/sc}{}
+\endinput

@@ -9,11 +9,6 @@ library(nnet)
 library(party)
 library(RColorBrewer)
 library(randomForest)
-# install.packages("tikzDevice", repos="http://R-Forge.R-project.org", 
-# type="source")
-remove.packages("tikzDevice")
-devtools::install_github( 'yihui/tikzDevice' )
-library(tikzDevice)
 
 
 # load data
@@ -43,22 +38,22 @@ myHeatmap = function(matrix){
 
   heatmapNew(matrix[nrow(matrix):1,], Rowv=NA, Colv=NA,
     col=colfunc(100), 
-    # col=rev(heat.colors(256)),
-    # scale="row",
-    # labRow=NA,
-    # labCol=NA,
+    # cexRow = 0.25 + 1/log10(nrow(matrix)),
+    # cexCol = 0.25 + 1/log10(ncol(matrix)),
     scale="row",
-    ylab="Actual Sport",
     xlab="Predicted Sport",
+    ylab="Actual Sport",
     margins=c(10,1,10)
   )
 }
 # sportANNmatrix
 myHeatmap(sportANNmatrix)
 
+?heatmap
+
+
 scale = function(){
   data = matrix(c(rep(0,11), seq(0, 1, by=0.1), rep(0,11)), nrow=11, ncol=3)
-  print(data)
   heatmapNew(data, Rowv=NA, Colv=NA,
     col=colfunc(100), 
     # main="Legend",
@@ -70,10 +65,13 @@ scale = function(){
     # ylab="Actual Sport",
     # xlab="Predicted Sport",
     margins=c(0,0,0),
-    add.expr=text(x=2, y=1:11, labels=as.character(seq(0, 1, by=0.1)))
+    add.expr=text(x=2, y=1:11, labels=as.character(seq(0, 1, by=0.1)), cex=2)
   )
 }
+
+pdf("graphics/scale.pdf")
 scale()
+dev.off()
 
 
 
@@ -102,27 +100,32 @@ modelCheck = function(mname){
 
   # training data
   mtrx = table(trnClass, trnPred)
-  filename = paste("graphics/", mname, "-trn.pdf", sep="")
-  pdf(filename)
-    mapDevice()
+  filename=paste("graphics/", mname, ".pdf", sep="")
+  # filename = paste("graphics/", mname, "-trn.pdf", sep="")
+  pdf(filename, width=6, height=3)
+  par(mfrow=c(1,2))
     myHeatmap(mtrx)
-  dev.off()
-  acc = mean(trnPred==trnClass)
-  cat("\tTrain accuracy:", acc, "\n")
+  # dev.off()
+  acc1 = mean(trnPred==trnClass)
+  cat("\tTrain accuracy:", acc1, "\n")
 
   # test data
   mtrx = table(tstClass, tstPred)
-  filename = paste("graphics/", mname, "-tst.pdf", sep="")
-  pdf(filename)
+  # filename = paste("graphics/", mname, "-tst.pdf", sep="")
+  # pdf(filename)
     myHeatmap(mtrx)
   dev.off()
-  acc = mean(tstPred==tstClass)
-  cat("\tTest accuracy:", acc, "\n")
+  acc2 = mean(tstPred==tstClass)
+  cat("\tTest accuracy:", acc2, "\n")
+
+  rat = acc2/acc1
+  cat("\tRatio:", rat, "\n")
 }
 
 for(m in models){
   modelCheck(m)
 }
 
-getwd()
+dev.off()
+
 

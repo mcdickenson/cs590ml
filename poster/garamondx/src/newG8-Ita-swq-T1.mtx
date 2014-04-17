@@ -1,0 +1,23 @@
+%Filename: newG8-Ita-swq-T1.mtx
+%Created by: tex zgm-drv
+%Created using: \generalpltomtx{newG8-Ita-swq}{newG8-Ita-swq-T1}{pl}{T1}
+
+%This file contains the information of newG8-Ita-swq.pl in a form
+%more easily read by TeX. It is used by the fontinst package.
+
+%THIS FILE CAN BE DELETED.
+
+\relax
+\metrics
+
+\needsfontinstversion{1.933}
+
+\storemapdata{newG8-Ita-swq-T1}{\frompl{newG8-Ita-swq}}{}
+
+\setdim{designsize}{10.0pt}
+\setdim{designunits}{1.0pt}
+\setrawglyph{Q}{newG8-Ita-swq}{10.0pt}{81}{793}{709}{344}{837}
+\setrawglyph{Ng}{newG8-Ita-swq}{10.0pt}{141}{758}{683}{221}{0}
+\setrawglyph{ng}{newG8-Ita-swq}{10.0pt}{173}{505}{441}{265}{0}
+
+\endmetrics

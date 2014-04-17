@@ -1,0 +1,23 @@
+%Filename: newG8-BolIta-swq-T1.mtx
+%Created by: tex zgm-drv
+%Created using: \generalpltomtx{newG8-BolIta-swq}{newG8-BolIta-swq-T1}{pl}{T1}
+
+%This file contains the information of newG8-BolIta-swq.pl in a form
+%more easily read by TeX. It is used by the fontinst package.
+
+%THIS FILE CAN BE DELETED.
+
+\relax
+\metrics
+
+\needsfontinstversion{1.933}
+
+\storemapdata{newG8-BolIta-swq-T1}{\frompl{newG8-BolIta-swq}}{}
+
+\setdim{designsize}{10.0pt}
+\setdim{designunits}{1.0pt}
+\setrawglyph{Q}{newG8-BolIta-swq}{10.0pt}{81}{830}{712}{344}{800}
+\setrawglyph{Ng}{newG8-BolIta-swq}{10.0pt}{141}{801}{720}{232}{0}
+\setrawglyph{ng}{newG8-BolIta-swq}{10.0pt}{173}{517}{451}{270}{0}
+
+\endmetrics

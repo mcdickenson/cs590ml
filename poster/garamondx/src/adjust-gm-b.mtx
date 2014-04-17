@@ -1,0 +1,56 @@
+\relax 
+
+\metrics 
+
+\needsfontinstversion{1.933} 
+
+% \shifttxtglyph takes four parameters: 
+% 
+% #1 the name of the glyph 
+% #2 the amount of extra space at the left 
+% #3 the amount of extra space at the right 
+
+\setcommand\shifttxtglyph#1#2#3{ 
+   \ifisglyph{#1}\then
+     \resetglyph{#1} 
+     	\movert{#2} 
+     	\glyph{#1}{1000} 
+     	\movert{#3} 
+     	\resetitalic{0} %\add{\italic{#1}}{\sub{#3}{#4}}} 
+     \endresetglyph 
+   \fi
+} 
+
+% \unfakable produces a missing glyph warning. 
+
+\setcommand\unfakable#1{ 
+   \setglyph{#1} 
+      \glyphrule{500}{500} 
+      \glyphwarning{missing glyph `#1'} 
+   \endsetglyph 
+} 
+
+% Zero the depth of a glyph. 
+
+\setcommand\zerodepth#1{
+   \ifisglyph{#1}\then 
+      \resetglyph{#1} 
+      	 \glyph{#1}{1000} 
+      	 \resetdepth{0} 
+      \endresetglyph
+   \fi 
+} 
+
+
+\shifttxtglyph{parenleft}{-25}{55}
+\shifttxtglyph{parenright}{20}{10}
+\shifttxtglyph{bracketleft}{25}{40}
+\shifttxtglyph{bracketright}{40}{25}
+\setkern{parenleft}{J}{55}
+\setkern{bracketleft}{J}{50}
+\setkern{braceleft}{J}{50}
+\setkern{parenleft}{C}{-40}
+\setkern{parenleft}{c}{-35}
+\setkern{parenleft}{G}{-30}
+\setkern{parenleft}{Q}{-35}
+\endmetrics

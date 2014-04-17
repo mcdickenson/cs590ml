@@ -1,0 +1,34 @@
+%Filename: zgmb-digits.mtx
+%Created by: tex zgm-drv
+%Created using: \mtxtomtx{newG8-Osf-bol}{zgmb-digits}
+
+%This file is used by the fontinst package.
+
+%THIS FILE CAN BE DELETED.
+
+\relax
+\metrics
+
+\needsfontinstversion{1.933}
+
+\storemapdata{zgmb-digits}{\frommtx{newG8-Osf-bol}}{\reencodefont{8r}}
+
+\setint{italicslant}{0}
+\setint{underlinethickness}{50}
+\setint{maxheight}{697}
+\setint{maxdepth_neg}{-256}
+\setint{descender_neg}{-256}
+\setscaledrawglyph{zero}{zgmb-digits}{10pt}{1000}{48}{504}{470}{6}{0}
+\setscaledrawglyph{one}{zgmb-digits}{10pt}{1000}{49}{389}{469}{7}{0}
+\setscaledrawglyph{two}{zgmb-digits}{10pt}{1000}{50}{498}{468}{7}{0}
+\setscaledrawglyph{three}{zgmb-digits}{10pt}{1000}{51}{442}{470}{210}{0}
+\setscaledrawglyph{four}{zgmb-digits}{10pt}{1000}{52}{510}{469}{210}{0}
+\setscaledrawglyph{five}{zgmb-digits}{10pt}{1000}{53}{473}{470}{206}{0}
+\setscaledrawglyph{six}{zgmb-digits}{10pt}{1000}{54}{510}{697}{9}{0}
+\setscaledrawglyph{seven}{zgmb-digits}{10pt}{1000}{55}{461}{469}{211}{0}
+\setscaledrawglyph{eight}{zgmb-digits}{10pt}{1000}{56}{498}{676}{12}{0}
+\setscaledrawglyph{nine}{zgmb-digits}{10pt}{1000}{57}{511}{469}{256}{0}
+\setscaledrawglyph{colon}{zgmb-digits}{10pt}{1000}{58}{431}{477}{6}{0}
+\setkern{seven}{four}{-81}
+
+\endmetrics

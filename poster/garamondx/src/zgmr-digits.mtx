@@ -1,0 +1,33 @@
+%Filename: zgmr-digits.mtx
+%Created by: tex zgm-drv
+%Created using: \mtxtomtx{newG8-Osf-reg}{zgmr-digits}
+
+%This file is used by the fontinst package.
+
+%THIS FILE CAN BE DELETED.
+
+\relax
+\metrics
+
+\needsfontinstversion{1.933}
+
+\storemapdata{zgmr-digits}{\frommtx{newG8-Osf-reg}}{\reencodefont{8r}}
+
+\setint{italicslant}{0}
+\setint{underlinethickness}{50}
+\setint{maxheight}{673}
+\setint{maxdepth_neg}{-237}
+\setint{descender_neg}{-237}
+\setscaledrawglyph{zero}{zgmr-digits}{10pt}{1000}{48}{501}{447}{9}{0}
+\setscaledrawglyph{one}{zgmr-digits}{10pt}{1000}{49}{374}{447}{5}{0}
+\setscaledrawglyph{two}{zgmr-digits}{10pt}{1000}{50}{487}{445}{5}{0}
+\setscaledrawglyph{three}{zgmr-digits}{10pt}{1000}{51}{444}{443}{237}{0}
+\setscaledrawglyph{four}{zgmr-digits}{10pt}{1000}{52}{489}{452}{218}{0}
+\setscaledrawglyph{five}{zgmr-digits}{10pt}{1000}{53}{413}{445}{218}{0}
+\setscaledrawglyph{six}{zgmr-digits}{10pt}{1000}{54}{487}{673}{5}{0}
+\setscaledrawglyph{seven}{zgmr-digits}{10pt}{1000}{55}{488}{447}{221}{0}
+\setscaledrawglyph{eight}{zgmr-digits}{10pt}{1000}{56}{479}{673}{5}{0}
+\setscaledrawglyph{nine}{zgmr-digits}{10pt}{1000}{57}{479}{444}{224}{0}
+\setscaledrawglyph{colon}{zgmr-digits}{10pt}{1000}{58}{399}{451}{5}{0}
+
+\endmetrics

@@ -1,0 +1,33 @@
+%Filename: newG8-Osf-ita.mtx
+%Created by: tex zgm-drv
+%Created using: \afmtomtx{newG8-Osf-ita}{newG8-Osf-ita}
+
+%This file contains the information of newG8-Osf-ita.afm in a form
+%more easily read by TeX. It is used by the fontinst package.
+
+%THIS FILE CAN BE DELETED.
+
+\relax
+\metrics
+
+\needsfontinstversion{1.933}
+
+\storemapdata{newG8-Osf-ita}{\fromafm{newG8-Osf-ita}{newG8-Osf-ita}}{}
+\setint{italicslant}{286}
+\setint{underlinethickness}{50}
+\setint{maxheight}{673}
+\setint{maxdepth_neg}{-237}
+\setint{descender_neg}{-237}
+\setrawglyph{zero}{newG8-Osf-ita}{10pt}{48}{527}{447}{4}{18}
+\setrawglyph{one}{newG8-Osf-ita}{10pt}{49}{374}{447}{5}{0}
+\setrawglyph{two}{newG8-Osf-ita}{10pt}{50}{487}{445}{5}{0}
+\setrawglyph{three}{newG8-Osf-ita}{10pt}{51}{429}{443}{237}{0}
+\setrawglyph{four}{newG8-Osf-ita}{10pt}{52}{494}{453}{217}{1}
+\setrawglyph{five}{newG8-Osf-ita}{10pt}{53}{404}{444}{222}{2}
+\setrawglyph{six}{newG8-Osf-ita}{10pt}{54}{523}{635}{7}{37}
+\setrawglyph{seven}{newG8-Osf-ita}{10pt}{55}{501}{438}{230}{82}
+\setrawglyph{eight}{newG8-Osf-ita}{10pt}{56}{505}{673}{5}{67}
+\setrawglyph{nine}{newG8-Osf-ita}{10pt}{57}{512}{432}{208}{0}
+\setrawglyph{colon}{newG8-Osf-ita}{10pt}{58}{369}{450}{6}{87}
+
+\endmetrics

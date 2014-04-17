@@ -41,3 +41,61 @@ legend('topleft', legend=c('Male', 'Female', 'Basketball', 'Weightlifting'),
   pch=c(0,1,16,16),
   col=c('black', 'black', 'blue', 'red'))
 dev.off()
+
+
+setwd('~/github/olympifier')
+athletes = read.csv('data/athletes-clean.csv', header=TRUE, as.is=TRUE)
+dim(athletes)
+sort(unique(athletes$Sport))
+
+colors = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3")
+
+wantSports = c("Basketball", "Rowing", "Weightlifting", "Wrestling")
+want = c(which(athletes$Sport %in% wantSports))
+subset = athletes[want, ]
+subset$color = NA 
+subset$color = ifelse(subset$Sport=="Basketball", "#e41a1c", subset$color)
+subset$color = ifelse(subset$Sport=="Rowing", "#377eb8", subset$color)
+subset$color = ifelse(subset$Sport=="Weightlifting", "#4daf4a", subset$color)
+subset$color = ifelse(subset$Sport=="Wrestling", "#984ea3", subset$color)
+subset$symbol = ifelse(subset$Female==1, 17, 15)
+head(subset)
+
+pdf("graphics/basketball.pdf")
+plot(subset$Weight, subset$Height,
+  col=subset$color,
+  pch=subset$symbol,
+  xlim=c(40, 160),
+  ylim=c(140, 220),
+  xlab="Weight (kg)",
+  ylab="Height (cm)")
+legend('topleft', legend=c('Male', 'Female', wantSports),
+  pch=c(15, 17, rep(16, 4)),
+  col=c('black', 'black', colors))
+dev.off()
+
+wantSports2 = c("Archery", "Swimming", "Handball", "Triathlon")
+want2 = c(which(athletes$Sport %in% wantSports2))
+subset2 = athletes[want2, ]
+dim(subset2)
+subset2$color = NA
+subset2$color = ifelse(subset2$Sport=="Archery", "#e41a1c", subset2$color)
+subset2$color = ifelse(subset2$Sport=="Swimming", "#377eb8", subset2$color)
+subset2$color = ifelse(subset2$Sport=="Handball", "#4daf4a", subset2$color)
+subset2$color = ifelse(subset2$Sport=="Triathlon", "#984ea3", subset2$color)
+subset2$symbol = ifelse(subset2$Female==1, 17, 15)
+
+pdf("graphics/swimming.pdf")
+plot(jitter(subset2$Weight), jitter(subset2$Height),
+  col=subset2$color,
+  pch=subset2$symbol,
+  xlim=c(40, 160),
+  ylim=c(140, 220),
+  xlab="Weight (kg)",
+  ylab="Height (cm)")
+legend('topleft', legend=c('Male', 'Female', wantSports2),
+  pch=c(15, 17, rep(16, 4)),
+  col=c('black', 'black', colors))
+dev.off()
+
+dev.off()

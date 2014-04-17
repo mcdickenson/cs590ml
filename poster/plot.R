@@ -38,8 +38,8 @@ myHeatmap = function(matrix){
 
   heatmapNew(matrix[nrow(matrix):1,], Rowv=NA, Colv=NA,
     col=colfunc(100), 
-    # cexRow = 0.25 + 1/log10(nrow(matrix)),
-    # cexCol = 0.25 + 1/log10(ncol(matrix)),
+    cexRow = 0.3 + 1/log10(nrow(matrix)),
+    cexCol = 0.3 + 1/log10(ncol(matrix)),
     scale="row",
     xlab="Predicted Sport",
     ylab="Actual Sport",
@@ -100,19 +100,17 @@ modelCheck = function(mname){
 
   # training data
   mtrx = table(trnClass, trnPred)
-  filename=paste("graphics/", mname, ".pdf", sep="")
-  # filename = paste("graphics/", mname, "-trn.pdf", sep="")
-  pdf(filename, width=6, height=3)
-  par(mfrow=c(1,2))
+  filename = paste("graphics/", mname, "-trn.pdf", sep="")
+  pdf(filename)
     myHeatmap(mtrx)
-  # dev.off()
+  dev.off()
   acc1 = mean(trnPred==trnClass)
   cat("\tTrain accuracy:", acc1, "\n")
 
   # test data
   mtrx = table(tstClass, tstPred)
-  # filename = paste("graphics/", mname, "-tst.pdf", sep="")
-  # pdf(filename)
+  filename = paste("graphics/", mname, "-tst.pdf", sep="")
+  pdf(filename)
     myHeatmap(mtrx)
   dev.off()
   acc2 = mean(tstPred==tstClass)

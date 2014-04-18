@@ -135,7 +135,8 @@ heatmapNew = function (x, Rowv = NULL, Colv = if (symm) "Rowv" else NULL,
     # axis(1, 1L:nc, labels = labCol, las = 2, line = -0.5, tick = 0, 
     #     cex.axis = cexCol, srt=45)
     axis(1, 1L:nc, labels = FALSE)
-    text(x=1L:nc-1, y=par("usr")[3] - 2.0, labels=labCol, srt=45, pos=1, xpd=TRUE)
+    text(x=1L:nc-1, y=par("usr")[3] - 3.0, labels=labCol, srt=45, pos=1, xpd=TRUE,
+        cex=cexCol)
     if (!is.null(xlab)) 
         mtext(xlab, side = 1, line = margins[1L] - 1.25)
     axis(2, iy, labels = labRow, las = 2, line = -0.5, tick = 0, 

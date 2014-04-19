@@ -43,6 +43,8 @@ legend('topleft', legend=c('Male', 'Female', 'Basketball', 'Weightlifting'),
 dev.off()
 
 
+############################################
+
 setwd('~/github/olympifier')
 athletes = read.csv('data/athletes-clean.csv', header=TRUE, as.is=TRUE)
 dim(athletes)
@@ -61,8 +63,10 @@ subset$color = ifelse(subset$Sport=="Wrestling", "#984ea3", subset$color)
 subset$symbol = ifelse(subset$Female==1, 17, 15)
 head(subset)
 
+# plot by sport
+
 pdf("graphics/basketball.pdf")
-plot(subset$Weight, subset$Height,
+plot(jitter(subset$Weight), jitter(subset$Height),
   col=subset$color,
   pch=subset$symbol,
   xlim=c(40, 160),
@@ -98,4 +102,110 @@ legend('topleft', legend=c('Male', 'Female', wantSports2),
   col=c('black', 'black', colors))
 dev.off()
 
+
+
+# plot by event
+setwd('~/github/olympifier')
+athletes = read.csv('data/athletes-clean.csv', header=TRUE, as.is=TRUE)
+athletes = athletes[which(athletes$Sport=="Athletics"),]
+sort(unique(athletes$FirstEvent))
+myColors = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3")
+
+# well-defined clusters
+# 100m hurdles
+# javelin
+# high jump
+# hammer throw
+
+athletes$event = NA 
+athletes$event = ifelse(athletes$FirstEvent=="Men's 110m Hurdles", "100m Hurdles", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Women's 100m Hurdles", "100m Hurdles", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Men's Javelin Throw", "Javelin", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Women's Javelin Throw", "Javelin", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Men's High Jump", "High Jump", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Women's High Jump", "High Jump", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Men's Hammer Throw", "Hammer Throw", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Women's Hammer Throw", "Hammer Throw", athletes$event)
+
+sort(unique(athletes$event))
+
+length(which(athletes$FirstEvent=="Men's Javelin Throw"))
+length(which(athletes$FirstEvent=="Women's Javelin Throw"))
+length(which(athletes$event=="Javelin"))
+
+wantEvents = c("100m Hurdles", "Hammer Throw", "High Jump", "Javelin")
+want = c(which(athletes$event %in% wantEvents))
+subset = athletes[want, ]
+# dim(subset)
+# head(subset)
+subset$color = NA 
+for(i in 1:4){
+  subset$color = ifelse(subset$event==wantEvents[i], myColors[i], subset$color)
+}
+subset$symbol = ifelse(subset$Female==1, 17, 15)
+head(subset)
+
+class(subset$Weight)
+class(subset$Height)
+
+summary(subset$color)
+unique(subset$color)
+
+pdf("graphics/javelin.pdf")
+plot(jitter(subset$Weight), jitter(subset$Height),
+  col=subset$color,
+  pch=subset$symbol,
+  xlim=c(40, 160),
+  ylim=c(140, 220),
+  xlab="Weight (kg)",
+  ylab="Height (cm)")
+legend('topleft', legend=c('Male', 'Female', wantEvents),
+  pch=c(15, 17, rep(16, 4)),
+  col=c('black', 'black', myColors))
 dev.off()
+
+# poorly defined
+# Women's 100m
+# Women's Marathon
+# Women's 4x400m Relay
+# Women's 400m hurdles
+
+athletes$event = ifelse(athletes$FirstEvent=="Men's 100m", "100m", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Women's 100m", "100m", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Men's Marathon", "Marathon", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Women's Marathon", "Marathon", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Men's 4 x 400m Relay", "400m Relay", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Women's 4 x 400m Relay", "400m Relay", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Men's 400m Hurdles", "400m Hurdles", athletes$event)
+athletes$event = ifelse(athletes$FirstEvent=="Women's 400m Hurdles", "400m Hurdles", athletes$event)
+
+sort(unique(athletes$event))
+
+
+wantEvents = c("100m", "400m Hurdles", "400m Relay", "Marathon")
+want = c(which(athletes$event %in% wantEvents))
+subset = athletes[want, ]
+# dim(subset)
+# head(subset)
+subset$color = NA 
+for(i in 1:4){
+  subset$color = ifelse(subset$event==wantEvents[i], myColors[i], subset$color)
+}
+subset$symbol = ifelse(subset$Female==1, 17, 15)
+
+
+pdf("graphics/marathon.pdf")
+plot(jitter(subset$Weight), jitter(subset$Height),
+  col=subset$color,
+  pch=subset$symbol,
+  xlim=c(40, 160),
+  ylim=c(140, 220),
+  xlab="Weight (kg)",
+  ylab="Height (cm)")
+legend('topleft', legend=c('Male', 'Female', wantEvents),
+  pch=c(15, 17, rep(16, 4)),
+  col=c('black', 'black', myColors))
+dev.off()
+
+
+# todo: jitter basketball

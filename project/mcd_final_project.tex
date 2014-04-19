@@ -108,7 +108,7 @@ Data was obtained for 10,383 participants in the 2012 London Olympics from \text
 \subsection{Features of the Data}
 % Describe the features that you will use from your data to solve this problem. 
 
-For both classification tasks participants' height, weight, age, and sex were used as features. Some sports and events exhibit relatively well-clustered features, whereas others are less clearly defined. In the sport classification task, participants in archery, handball, swimming, and triathlon exhibited similar features--and were thus difficult to classify accurately--while basketball players, rowers, weightlifters, and wrestlers had more distinct features (Figure \ref{sports-features}. For event classification it was difficult to classify athletes in the 100m race, 400m hurdles, 400m relay, and marathon, but easier to classify participants in the 100m hurdles, hammer throw, high jump, and javelin events (Figure \ref{events-features}. 
+For both classification tasks participants' height, weight, age, and sex were used as features. Some sports and events exhibit relatively well-clustered features, whereas others are less clearly defined. In the sport classification task, participants in archery, handball, swimming, and triathlon exhibited similar features--and were thus difficult to classify accurately--while basketball players, rowers, weightlifters, and wrestlers had more distinct features (see Figure \ref{sports-features}. For event classification it was difficult to classify athletes in the 100m race, 400m hurdles, 400m relay, and marathon, but easier to classify participants in the 100m hurdles, hammer throw, high jump, and javelin events. 
 
 \input{descriptive}
 % todo: consider doing full twoway plots
@@ -143,30 +143,23 @@ Several machine learning methods were applied to this classification problem. Co
 
 \subsection{Classification by Sport}
 
-\input{sport-figures}
+\input{sport-and-event-figures}
 % todo: describe 
-% todo: scale these down
-
-\subsection{Classification by Event}
-% todo: may be possible to get sports and events side-by-side
-
+% todo: add legend
 % todo: describe 
-
-
-\subsection{Interpretation}
-
-% todo: interpret results
 
 \subsection{Model Diagnostics}
 
 Table \ref{accuracy} presents the accuracy of each model for the sport and event classification tasks. Hierarchical clustering could not be used for event classification due to the small sizes of the clusters (for example, there was complete data for only one participant in the women's triathlon). The ratio columns indicate how well the model performs on the test data relative to the training data. Values near one mean that the model does about as well out-of-sample as it does on the training data, while values near zero suggests a model that is overfit to the trianing data.
 % todo: double check that triathlon was the problem
-
-Evolutionary trees and neural networks both exhibit higher accuracy for events than sports, and maintain acceptable out-of-sample accuracy. Conditional inference trees do slightly less well for both training and test sets. Random forests tend to overfit the training data but still do well on the test set. Overall, this appears to be a difficult classification problem.
-
 % todo: compare models
 
 \input{accuracy-table}
+
+\subsection{Interpretation}
+
+% todo: interpret results
+Evolutionary trees and neural networks both exhibit higher accuracy for events than sports, and maintain acceptable out-of-sample accuracy. Conditional inference trees do slightly less well for both training and test sets. Random forests tend to overfit the training data but still do well on the test set. Overall, this appears to be a difficult classification problem.
 
 
 \section{Conclusion}

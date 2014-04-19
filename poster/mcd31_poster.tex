@@ -71,20 +71,37 @@ fontscale=.35, margin=1in]{baposter}
   background=plain,
   linewidth=2pt
   } {%%% Eye Catcher %%%%%%%%
-	\hspace{1.3in} 
-        \setlength\fboxsep{0pt}
-        \setlength\fboxrule{0.5pt}
-        \fbox{
-        \includegraphics[scale=0.15]{../graphics/SportsGene.jpg}
-        }
+	\hspace{1.0in} 
+  \centering \includegraphics[scale=.6]{../graphics/london-2012-olympics-logo.jpg} \hspace{1in}
+
+        % \setlength\fboxsep{0pt}
+        % \setlength\fboxrule{0.5pt}
+        % \fbox{
+        % \includegraphics[scale=0.15]{../graphics/SportsGene.jpg}
+        % }
+\hspace{-1.5in}
 } {%%% Title %%%%%%%%
+% \centering
 \textsf{
 	\bf{Classifying Olympic Athletes By Sport and Event}}
 } { %%% Authors %%%%%%%
+~\\
+  \hspace{-1in}
 	\vspace{1em} \textsf{Matt Dickenson}\\
+  %%%
+  \vspace{-0.1in}
+  \hspace{-1in}
 	{\smaller \textsf{mcd31@duke.edu}}
 } {%%% Logo %%%%%%%%%%
-  \centering \includegraphics[scale=.8]{dukelogo_vert_black.eps} \hspace{1in}
+  % \centering \includegraphics[scale=.8]{dukelogo_vert_black.eps} \hspace{1in}
+  \centering
+  \setlength\fboxsep{0pt}
+        \setlength\fboxrule{0.5pt}
+        \fbox{
+          \includegraphics[scale=0.15]{../graphics/SportsGene.jpg}
+        }
+  % \centering \includegraphics[scale=.6]{../graphics/london-2012-olympics-logo.jpg} 
+  \hspace{1.6in}
 }
 
 
@@ -107,7 +124,7 @@ fontscale=.35, margin=1in]{baposter}
   \headerbox{\bf Motivation}{name=question,column=0,row=0}{
 %%%%%
 
-To what extent do biological traits determine sporting success? At the highest level of amateur sports--the Olympic games--we can notice differences in the physical characteristics of participating athletes across sports. Can these differences be exploited to classify individuals by sport or event given their physical attributes? 
+To what extent do biological traits determine sporting success? At the highest level of amateur sports--the Olympic games--we see differences in the physical characteristics of participants across sports. Can these differences be exploited to classify individuals by sport or event given their physical attributes? 
 
 This project was inspired by a claim made by David Epstein, author of \textit{The Sports Gene}. This claim is expressed in an interview with Russ Roberts:
 \begin{quote}
@@ -121,7 +138,7 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
 %%%%%%
   \headerbox{\bf Data}{name=data,below=question}{
 %%%%%
-  Data was obtained for participants in the 2012 London Olympics from \textit{The Guardian}. The original data consisted of 10,383 participants, which was reduced to 8,856 observations after data processing. Of these, 6,956 participants were split into training ($n$=3,520) and test ($n$=3,436) sets for classification by sports ($k=27$). The remaining 1,900 Athletics participants were split into training ($n$=907) and test ($n$=993) sets for classification by event ($k=48)$. Participants' height, weight, age, and sex were used as features. Some sports and events exhibit relatively well-clustered features, whereas others are less defined.
+  Data was obtained for 10,383 participants in the 2012 London Olympics from \textit{The Guardian}. The processed data consists of 8,856 complete cases. Of these, 6,956 participants were split into training ($n$=3,520) and test ($n$=3,436) sets for classification by sports ($k=27$). The remaining 1,900 Athletics participants were split into training ($n$=907) and test ($n$=993) sets for classification by event ($k=48)$. Participants' height, weight, age, and sex were used as features. Some sports and events exhibit relatively well-clustered features, whereas others are less defined.
 
   \begin{center}
   \begin{minipage}{0.45\textwidth}
@@ -153,32 +170,32 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
 %%%%%%
   \headerbox{\bf Methodology}{name=methods,below=data,above=bottom}{
 %%%%%
-  Several machine learning methods were applied to this classification problem. Conditional inference trees were formed by recursive binary partitioning. Evolutionary trees seek a globally optimal tree by minimizing the misclassification rate. Breiman's Random Forest algorithm was used with 500 trees. Single-hidden-layer neural networks were constructed with 30 units in the hidden layer for sport classification and 50 for event classification.
+  Several machine learning methods were applied to this classification problem. Conditional inference trees were formed by recursive binary partitioning. Evolutionary trees were constructed to be globally optimal by minimizing the misclassification rate. Breiman's Random Forest algorithm was used with 500 trees. Single-hidden-layer neural networks were constructed with 30 units in the hidden layer for sport classification and 50 for event classification.
   % Hierarchical clustering using Gaussian marginal likelihoods was performed using the \texttt{mclust} package.
 
   % \begin{center}
   %   \includegraphics[scale=0.2]{../graphics/scale.pdf}
   % \end{center}
 
-  \vspace{-0.1in}
+  \vspace{0.1in}
 
-  \begin{minipage}{0.5\textwidth}
-    The columns at right present these results visually, with row-normalized observed frequencies. The figure at right serves as a legend for all heatmaps.
-  \end{minipage}
-  \hspace{0.05\textwidth}
-  \begin{minipage}{0.35\textwidth}
-    \begin{center}
-    \hspace{-1.5in}
+  \begin{minipage}{0.4\textwidth}
+        \begin{center}
+    % \hspace{-1.5in}
       \includegraphics[scale=0.2]{../graphics/scale.pdf}
     \hspace{-0.5in}
     \end{center}
+  \end{minipage}
+  \hspace{0.05\textwidth}
+  \begin{minipage}{0.45\textwidth}
+    The columns at right present the results visually, with row-normalized observed frequencies. The figure at left serves as a legend for all heatmaps.
   \end{minipage}
   % todo: fix the scale
  }
 
 
 %%%%%%
-  \headerbox{\bf Classifying by Sport}{name=estimations,column=1,row=0}{
+  \headerbox{\bf Classification by Sport}{name=estimations,column=1,row=0}{
 %%%%%
 
   \begin{center}
@@ -198,6 +215,8 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Conditional Inference Tree \\
+
   \begin{minipage}{0.45\textwidth}
     \begin{center}
       \includegraphics[scale=0.27]{../graphics/sportCIT-trn.pdf}
@@ -209,11 +228,12 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
       \includegraphics[scale=0.27]{../graphics/sportCIT-tst.pdf}
     \end{center}
   \end{minipage}
-  Conditional Inference Tree \\
 
 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Evolutionary Tree \\
+
   \begin{minipage}{0.45\textwidth}
     \begin{center}
       \includegraphics[scale=0.27]{../graphics/sportEV-trn.pdf}
@@ -225,11 +245,11 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
       \includegraphics[scale=0.27]{../graphics/sportEV-tst.pdf}
     \end{center}
   \end{minipage}
-  Evolutionary Tree \\
 
 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Random Forest \\
   \begin{minipage}{0.45\textwidth}
     \begin{center}
       \includegraphics[scale=0.27]{../graphics/sportRF-trn.pdf}
@@ -241,11 +261,11 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
       \includegraphics[scale=0.27]{../graphics/sportRF-tst.pdf}
     \end{center}
   \end{minipage}
-  Random Forest \\
 
 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Neural Network \\
   \begin{minipage}{0.45\textwidth}
     \begin{center}
       \includegraphics[scale=0.27]{../graphics/sportANN-trn.pdf}
@@ -257,7 +277,6 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
       \includegraphics[scale=0.27]{../graphics/sportANN-tst.pdf}
     \end{center}
   \end{minipage}
-  Neural Network \\
   \end{center}
 
 
@@ -267,9 +286,10 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
  %%%%%%
   \headerbox{\bf Accuracy}{name=accuracy,below=estimations,above=bottom,column=1}{
 %%%%%
- Evolutionary trees and neural networks both exhibit higher accuracy for events than sports, and maintain acceptable out-of-sample accuracy. Conditional inference trees do slightly less well, for both training and test sets. Random forests tend to overfit the training data but still do well on the test set.
+ Evolutionary trees and neural networks both exhibit higher accuracy for events than sports, and maintain acceptable out-of-sample accuracy. Conditional inference trees do slightly less well for both training and test sets. Random forests tend to overfit the training data but still do well on the test set. Overall, this appears to be a difficult classification problem.
 
-    \begin{center}
+\vspace{-0.05in}
+  \begin{center}
   \footnotesize
     \begin{tabular}{lcccccc}
       \multicolumn{1}{c}{} & \multicolumn{3}{c}{Sports} & \multicolumn{3}{c}{Events} \\
@@ -286,11 +306,12 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
 
 
 %%%%%%
-  \headerbox{\bf Classifying by Event}{name=predictions,column=2,row=0}{
+  \headerbox{\bf Classification by Event}{name=predictions,column=2,row=0}{
 %%%%%
   
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{center}
+  Conditional Inference Tree \\
   \begin{minipage}{0.45\textwidth}
     \begin{center}
       \includegraphics[scale=0.27]{../graphics/athletesCIT-trn.pdf}
@@ -302,10 +323,10 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
       \includegraphics[scale=0.27]{../graphics/athletesCIT-tst.pdf}
     \end{center}
   \end{minipage}
-  Conditional Inference Tree \\
 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  Evolutionary Tree \\
   \begin{minipage}{0.45\textwidth}
     \begin{center}
       \includegraphics[scale=0.27]{../graphics/athletesEV-trn.pdf}
@@ -317,10 +338,10 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
       \includegraphics[scale=0.27]{../graphics/athletesEV-tst.pdf}
     \end{center}
   \end{minipage}
-  Evolutionary Tree \\
 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  Random Forest \\
   \begin{minipage}{0.45\textwidth}
     \begin{center}
       \includegraphics[scale=0.27]{../graphics/athletesRF-trn.pdf}
@@ -332,10 +353,10 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
       \includegraphics[scale=0.27]{../graphics/athletesRF-tst.pdf}
     \end{center}
   \end{minipage}
-  Random Forest \\
 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  Neural Network \\
   \begin{minipage}{0.45\textwidth}
     \begin{center}
       \includegraphics[scale=0.27]{../graphics/athletesANN-trn.pdf}
@@ -347,7 +368,6 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
       \includegraphics[scale=0.27]{../graphics/athletesANN-tst.pdf}
     \end{center}
   \end{minipage}
-  Neural Network \\
   \end{center}
 
  }
@@ -357,8 +377,10 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
 %%%%%
    \begin{itemize} \compresslist
       \item Classifying athletes by sport can be achieved with moderate accuracy using only a few features
-      \item Data with a large number of categories can be difficult to classify
+      \item Additional features such as arm length and torso length could improve predictive accuracy
+      % \item Data with a large number of categories can be difficult to classify
       \item Traits of athletes in some sports and events exhibit noticeable clustering, while other categories are less distinct (multi-modal)
+      \item Above a minimum threshold of physicality, success in many sports is dependent on training
       \item Athletes in some sports and events have a well-defined body type, but Olympians exhibit a wide range of physical features
   \end{itemize}
  }

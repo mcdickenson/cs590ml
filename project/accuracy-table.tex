@@ -1,0 +1,17 @@
+\begin{table}[h!]
+\caption{Accuracy for training and test sets.}
+\label{accuracy}
+\begin{center}
+  % \footnotesize
+    \begin{tabular}{lcccccc}
+      \multicolumn{1}{c}{} & \multicolumn{3}{c}{Sports} & \multicolumn{3}{c}{Events} \\
+       \multicolumn{1}{c}{} & \multicolumn{1}{c}{Train} & \multicolumn{1}{c}{Test} & \multicolumn{1}{c}{Ratio} & \multicolumn{1}{c}{Train} & \multicolumn{1}{c}{Test} & \multicolumn{1}{c}{Ratio}\\
+      \midrule
+      Hierarchical Clustering     & .272 & .271 & .998 \\
+      Conditional Inference Tree  & .279 & .219 & .784 & .277 & .218 & .787 \\
+      Evolutionary Tree           & .292 & .236 & .807 & .303 & .230 & .757 \\
+      Random Forest               & .923 & .244 & .265 & .976 & .228 & .233 \\
+      Neural Network              & .280 & .265 & .949 & .397 & .249 & .623
+    \end{tabular}
+  \end{center}
+\end{table}

@@ -55,7 +55,7 @@ Durham, NC 27708 \\
 \thispagestyle{empty}
 
 \begin{abstract}
-% todo: abstract
+Can the sport or event an Olympic athlete participated in be predicted from her height, weight, age, and sex? One sports analyst has claimed that he could do this with a high degree of accuracy, as part of a broader argument that genetics determine sporting success. In contrast, another school of thought argues that an athlete's training (on the order of 10,000 hours) is more predictive. This project classifies athletes from the 2012 Olympic games using hierarchical clustering, conditional inference trees, evolutionary trees, random forests, and neural networks. Between 25 and 30 percent of observations are classified accurately. This suggests that physical features play a strong predictive role, but training likely explains a large proportion of the remaining variance. Above a minimum threshold of physicality, training plays an important role in sporting success.
 \end{abstract}
 
 \end{titlepage}
@@ -77,10 +77,8 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
 \textbf{Roberts}: [You argue that] if you simply had the height and weight of an Olympic roster, you could do a pretty good job of guessing what their events are. Is that correct? \\
 \textbf{Epstein}: That's definitely correct. I don't think you would get every person accurately, but... \textit{I think you would get the vast majority of them correctly.} And frankly, you could definitely do it easily if you had them charted on a height-and-weight graph, and I think you could do it for most positions in something like football as well.\footnote{An audio recording of the interview, as well as a partial transcript, is available at \url{http://www.econtalk.org/archives/2013/09/david_epstein_o.html}.}
 \end{quote}
-% todo: cite the book; cite the podcast
 
-Epstein's work is in large part a counter-argument to the ``10,000 hour rule,'' popularized by Malcolm Gladwell, which claims that that amount of practice is necessary to attain mastery of a skill \citep{gladwell2008outliers}. The results in this paper show whether an athlete's sport or event can be accurately predicted by their physical features. If true, that suggests that athletes choose the event that best leverages their natural predisposition. If not, that would suggest that athletic ability can be understood as a latent trait that can be applied to the sport of one's choice. The remainder of this paper describes related work, outlines the machine learning methods used, and presents the results.
-% todo: cite Gladwell
+Epstein's work is in large part a counter-argument to the ``10,000 hour rule,'' popularized by Malcolm Gladwell, which claims that that amount of practice is necessary to attain mastery of a skill \citep{gladwell2008outliers}. This project analyzes whether an athlete's sport or event can be accurately predicted by their physical features. If true, that suggests that athletes choose the event that best leverages their natural predisposition. If not, that would suggest that athletic ability can be understood as a latent trait that can be applied to the sport of one's choice. The remainder of this paper describes related work, outlines the machine learning methods used, and presents the results.
 
 
 \subsection{Related Work}
@@ -111,7 +109,6 @@ Data was obtained for 10,383 participants in the 2012 London Olympics from \text
 For both classification tasks participants' height, weight, age, and sex were used as features. Some sports and events exhibit relatively well-clustered features, whereas others are less clearly defined. In the sport classification task, participants in archery, handball, swimming, and triathlon exhibited similar features--and were thus difficult to classify accurately--while basketball players, rowers, weightlifters, and wrestlers had more distinct features (see Figure \ref{sports-features}. For event classification it was difficult to classify athletes in the 100m race, 400m hurdles, 400m relay, and marathon, but easier to classify participants in the 100m hurdles, hammer throw, high jump, and javelin events. 
 
 \input{descriptive}
-% todo: consider doing full twoway plots
 
 
 \subsection{Model}
@@ -123,8 +120,9 @@ In order to classify an athlete from the test set, we can use the posterior pred
 \begin{eqnarray*}
 p(\mathbf{y}|\mathcal{D}) &=& \sum_{k \in N} w_k p(\mathbf{y}|\mathcal{D}_k),
 \end{eqnarray*}
-where $w_k$ is the weight on cluster $k$, $\mathcal{D}_k$ is the feature data for observations in cluster $k$, $N$ is the set of nodes in the tree, and $N_k$ represents the nodes lying on the path from the root to node $k$'s parent. 
-% todo: more detail
+where $w_k$ is the weight on category $k$, $\mathcal{D}_k$ is the feature data for observations in category $k$, and $N$ is the set of categories. Categories can represent sports or events depending on the classification task. The substantive interpretation of the posterior predictive distribution is the probability that a given athlete belongs to a certain category.
+
+% todo: more detail; express generally enough for all 5 models
 
 % provide interpretations for these variables (i.e., which are observed, which are hidden, and which you will be estimating, and how each of the observed values will be processed from the original data). 
 
@@ -133,8 +131,7 @@ where $w_k$ is the weight on cluster $k$, $\mathcal{D}_k$ is the feature data fo
 
 % In three sentences, describe the inference problem and what methods you will use for this task.
 
-Several machine learning methods were applied to this classification problem. Conditional inference trees were formed by recursive binary partitioning. Evolutionary trees were constructed to be globally optimal by minimizing the misclassification rate. Breiman's Random Forest algorithm was used with 500 trees. Single-hidden-layer neural networks were constructed with 30 units in the hidden layer for sport classification and 50 for event classification.
-% todo: cite the R packages used and their documentation
+Several machine learning methods were used to classify Olympic athletes by sport and event. Hierarchical clustering was performed with a Gaussian likelihood model, with the covariance matrix $\Sigma_k=\lambda_k D_k A D_k^T$ (an ellipsoidal distribution with variable volume, equal shape, and variable orientation) \citep{heller2005bayesian,fraley2012mclust}. Conditional inference trees were formed by recursive binary partitioning, using the \texttt{party} package in $\mathcal{R}$ \citep{hothorn2006unbiased,hothorn2010party}. Evolutionary trees were constructed to be globally optimal by minimizing the misclassification rate, using the \texttt{evtree} package \citep{grubinger2011evtree}. Breiman's Random Forest algorithm was used with 500 trees, as implemented in the \texttt{randomForest} package \citep{liaw2002classification}. Single-hidden-layer neural networks were constructed with 30 units in the hidden layer for sport classification and 50 for event classification, with the package \texttt{nnet} \citep{venables2002modern}.
 
 % In terms of being concise, if the methodological ideas are written exactly elsewhere, you may reference (and cite) that text, as long as you explain clearly what you did so that your experimental results could be replicated based on your text.
 
@@ -143,37 +140,36 @@ Several machine learning methods were applied to this classification problem. Co
 
 \subsection{Classification by Sport}
 
+Figure \ref{matrices} presents classification matrices for sports (left two columns) and events (right two columns). Each matrix is row-normalized, so the darkest cell on a row indicates the modal predicted class (columns) for true members of the class (rows). Dark cells along the diagonal indicate accurate predictions. A legend is provided in Figure \ref{legend}. Hierarchical clustering was not used for the event classification task (see Section \ref{diagnostics}).
+
 \input{sport-and-event-figures}
-% todo: describe 
-% todo: add legend
-% todo: describe 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.2]{../graphics/scale.pdf}
+  \end{center}
+  \caption{Legend for matrices in Figure \ref{matrices}.}
+  \label{legend}
+\end{figure}
 
 \subsection{Model Diagnostics}
+\label{diagnostics}
 
-Table \ref{accuracy} presents the accuracy of each model for the sport and event classification tasks. Hierarchical clustering could not be used for event classification due to the small sizes of the clusters (for example, there was complete data for only one participant in the women's triathlon). The ratio columns indicate how well the model performs on the test data relative to the training data. Values near one mean that the model does about as well out-of-sample as it does on the training data, while values near zero suggests a model that is overfit to the trianing data.
-% todo: double check that triathlon was the problem
-% todo: compare models
+Table \ref{accuracy} presents the accuracy of each model for the sport and event classification tasks. Hierarchical clustering could not be used for event classification due to the small sizes of the clusters (for example, there was complete data for only one participant in the women's triathlon event). The ratio columns indicate how well the model performs on the test data relative to the training data. Values near one mean that the model does about as well out-of-sample as it does on the training data, while values near zero suggests a model that is overfit to the trianing data.
 
 \input{accuracy-table}
 
 \subsection{Interpretation}
 
-% todo: interpret results
-Evolutionary trees and neural networks both exhibit higher accuracy for events than sports, and maintain acceptable out-of-sample accuracy. Conditional inference trees do slightly less well for both training and test sets. Random forests tend to overfit the training data but still do well on the test set. Overall, this appears to be a difficult classification problem.
+Hierarchical clustering had the best test set performance, suggesting a robust model that predicts moderately accurately without overfitting the training data. Evolutionary trees and neural networks both exhibit higher accuracy for events than sports, and maintain acceptable out-of-sample accuracy. Conditional inference trees do slightly less well for both training and test sets. Random forests tend to overfit the training data but still do well on the test set. Overall, this appears to be a difficult classification problem.
+
+% Participants in some sports and events are easier to classify than others. For the sports classification task, basketball, rowing, weightlifting, and wrestling tended to be predicted accurately while archery, handball, swimming, and triathlon were among the least accurately predicted categories. When classifying events, 100m hurdles, hammer throw, high jump, and javelin were predicted fairly accurately, while the 100m race, 400m hurdles, 400m relay, and marathon were more difficult to classify.
 
 
 \section{Conclusion}
 
-\begin{itemize} 
-  \item Classifying athletes by sport can be achieved with moderate accuracy using only a few features
-  \item Additional features such as arm length and torso length could improve predictive accuracy
-  % \item Data with a large number of categories can be difficult to classify
-  \item Traits of athletes in some sports and events exhibit noticeable clustering, while other categories are less distinct (multi-modal)
-  \item Above a minimum threshold of physicality, success in many sports is dependent on training
-  \item Athletes in some sports and events have a well-defined body type, but Olympians exhibit a wide range of physical features
-\end{itemize}
+The results presented above show that classifying athletes by sport and event can be achieved with moderate accuracy using only a few features. However, Epstein's confidence that he could accurately classify Olympians by only height and weight seems misplaced. Additional features such as arm length and torso length could improve predictive accuracy. Traits of athletes in some sports and events exhibit noticeable clustering, while other categories are less distinct (i.e. multi-modal). Athletes in some sports and events have a well-defined body type, but Olympians exhibit a wide range of physical features. As the Olympics become more competitive, training will continue to play a vital role in sporting success.
 
-% todo: discuss big-picture implications
 
 \subsubsection*{Acknowledgments}
 

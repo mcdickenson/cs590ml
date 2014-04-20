@@ -140,17 +140,10 @@ Several machine learning methods were used to classify Olympic athletes by sport
 
 \subsection{Classification by Sport}
 
-Figure \ref{matrices} presents classification matrices for sports (left two columns) and events (right two columns). Each matrix is row-normalized, so the darkest cell on a row indicates the modal predicted class (columns) for true members of the class (rows). Dark cells along the diagonal indicate accurate predictions. A legend is provided in Figure \ref{legend}. Hierarchical clustering was not used for the event classification task (see Section \ref{diagnostics}).
+Figure \ref{matrices} presents classification matrices for sports (left two columns) and events (right two columns). Each matrix is row-normalized, so the darkest cell on a row indicates the modal predicted class (columns) for true members of the class (rows). Dark cells along the diagonal indicate accurate predictions. A legend is provided at top right. Hierarchical clustering was not used for the event classification task (see Section \ref{diagnostics}).
 
 \input{sport-and-event-figures}
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[scale=0.2]{../graphics/scale.pdf}
-  \end{center}
-  \caption{Legend for matrices in Figure \ref{matrices}.}
-  \label{legend}
-\end{figure}
 
 \subsection{Model Diagnostics}
 \label{diagnostics}

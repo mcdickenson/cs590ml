@@ -78,7 +78,7 @@ This project was inspired by a claim made by David Epstein, author of \textit{Th
 \textbf{Epstein}: That's definitely correct. I don't think you would get every person accurately, but... \textit{I think you would get the vast majority of them correctly.} And frankly, you could definitely do it easily if you had them charted on a height-and-weight graph, and I think you could do it for most positions in something like football as well.\footnote{An audio recording of the interview, as well as a partial transcript, is available at \url{http://www.econtalk.org/archives/2013/09/david_epstein_o.html}.}
 \end{quote}
 
-Epstein's work is in large part a counter-argument to the ``10,000 hour rule,'' popularized by Malcolm Gladwell, which claims that that amount of practice is necessary to attain mastery of a skill \citep{gladwell2008outliers}. This project analyzes whether an athlete's sport or event can be accurately predicted by their physical features. If true, that suggests that athletes choose the event that best leverages their natural predisposition. If not, that would suggest that athletic ability can be understood as a latent trait that can be applied to the sport of one's choice. The remainder of this paper describes related work, outlines the machine learning methods used, and presents the results.
+Epstein's work is in large part a counter-argument to the ``10,000 hour rule,'' popularized by Malcolm Gladwell, which claims that that amount of practice is necessary to attain mastery of a skill \citep{gladwell2008outliers}.\footnote{Unsurprisingly, the original paper from which Gladwell draws is more nuanced. In that paper the authors acknowledge that physical characteristics of athletes systematically differ from the general population, but maintain that deliberate practice plays a large role in success \citep{ericsson1993role}}. This project analyzes whether an athlete's sport or event can be accurately predicted by their physical features. If true, that suggests that athletes choose the event that best leverages their natural predisposition. If not, that would suggest that athletic ability can be understood as a latent trait that can be applied to the sport of one's choice. The remainder of this paper describes related work, outlines the machine learning methods used, and presents the results.
 
 
 \subsection{Related Work}
@@ -92,6 +92,10 @@ Epstein's work is in large part a counter-argument to the ``10,000 hour rule,'' 
 % todo: cite earlier work on olympics
 % todo: cite more general sports analytics stuff
 % todo: cite original 10,000 hours paper
+
+Prior work on Olympic athletes, and elite athletes in general, tends to examine features of participants conditional on their sport. For example, height tends to be associated with success in running sports such as football (soccer) and (unsurprisingly) basketball \citep{reilly2000anthropometric,norton2001morphological}. The features that determine success in specific sports have also become more extreme over time \citep{willer2009six,lozovina2012morphological}.
+
+Many of these studies rely on small sample sizes, and those with $n>1,000$ tend to be convenience samples of Olympic athletes rather than censuses \citep{de1974genetic}. The most extensive study of Olympians examined data from only 32 participants in two events \citep{khosla1985age}. This project benefits from data on all participants in the 2012 Olympic games (excluding some presumably random missingness), allowing us to predict which sport an athlete participated in conditional on her height, weight, age and sex. Additional features that could be helpful in future research include leg length, pelvic width, and arm length \citep{lohman2012current}. 
 
 \section{Model and Methods}
 
@@ -148,7 +152,7 @@ Figure \ref{matrices} presents classification matrices for sports (left two colu
 \subsection{Model Diagnostics}
 \label{diagnostics}
 
-Table \ref{accuracy} presents the accuracy of each model for the sport and event classification tasks. Hierarchical clustering could not be used for event classification due to the small sizes of the clusters (for example, there was complete data for only one participant in the women's triathlon event). The ratio columns indicate how well the model performs on the test data relative to the training data. Values near one mean that the model does about as well out-of-sample as it does on the training data, while values near zero suggests a model that is overfit to the trianing data.
+Table \ref{accuracy} presents the accuracy of each model for the sport and event classification tasks. Hierarchical clustering could not be used for event classification due to the small sizes of the clusters (for example, there was complete data for only one participant in the women's triathlon event). The ratio columns indicate how well the model performs on the test data relative to the training data. Values near one mean that the model does about as well out-of-sample as it does on the training data, while values near zero suggests a model that is overfit to the training data.
 
 \input{accuracy-table}
 
@@ -168,7 +172,7 @@ The results presented above show that classifying athletes by sport and event ca
 
 Thanks to Michael D. Ward and National Science Foundation Grant \#3331808 for support during this project. Any conclusions or errors are the sole responsibility of the author.
 
-% \newpage
+\newpage
 \subsubsection*{References}
 
 % CITE A LOT. Any unreferenced methods, prior work, or biological phenomenon, unless it is textbook-common, will be penalized.
